@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+* {
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+  box-sizing: border-box;
+  color: white;
+}
+
+ion-header {
+  background: linear-gradient(45deg, #c0aafe, #86b6ff);
+  color: white;
+}
+
+ion-toolbar {
+  --background: transparent;
+  color: white;
+}
+
+ion-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+ion-content {
+  --background: #1a1a1a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+#botones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+ion-item {
+  --background: #333;
+  color: white;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+ion-label {
+  color: #ccc;
+}
+
+ion-input {
+  color: white;
+  border-radius: 20px;
+  width: 100%;
+  padding: 12px;
+}
+
+ion-button {
+  --background: #83c5ff;
+  --background-activated: #555;
+  --color: white;
+  width: 100%;
+  width: 13rem;
+  height: 3rem;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.imgnote {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.imgnote img {
+  width: 250px;
+  height: auto;
+}
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+
+.loading-container img {
+  width: 100px; 
+  height: auto;
+}

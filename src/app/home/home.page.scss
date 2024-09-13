@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+* {
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+  box-sizing: border-box;
+  color: white;
+}
+
+ion-header {
+  background: linear-gradient(45deg, #c0aafe, #86b6ff);
+  color: white;
+}
+
+ion-toolbar {
+  --background: transparent;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ion-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  flex: 1;
+  text-align: center;
+}
+
+ion-content {
+  --background: #1a1a1a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+ion-list {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;  
+}
+
+ion-item {
+  --background: #1a1a1a;
+  color: white;
+  margin-bottom: 20px; /* Mayor separación entre items */
+  width: 100%;
+  max-width: 15rem;
+  border-radius: 20px;
+  border: 1px solid #333; /* Añadir un borde oscuro para mayor definición */
+  --padding-start: 12px;
+}
+
+ion-label {
+  color: #ccc;
+}
+
+ion-input {
+  color: white;
+  width: 100%;
+  max-width: 15rem;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+ion-button {
+  --background: #83c5ff;
+  --background-activated: #555;
+  --color: white;
+  width: 100%;
+  max-width: 10rem;
+  height: 3rem;
+  border-radius: 5rem;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

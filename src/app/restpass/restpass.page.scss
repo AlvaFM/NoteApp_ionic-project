@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+* {
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+  box-sizing: border-box;
+  color: white;
+}
+
+ion-header {
+  background: linear-gradient(45deg, #c0aafe, #86b6ff);
+  color: white;
+}
+
+ion-toolbar {
+  --background: transparent;
+  color: white;
+}
+
+ion-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+ion-content {
+  --background: #1a1a1a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+ion-item {
+  --background: #333;
+  color: white;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 15px;
+}
+
+ion-label {
+  color: #ccc;
+}
+
+ion-input {
+  color: white;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+ion-button {
+  --background: #83c5ff;
+  --background-activated: #555;
+  --color: white;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  height: 3rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
