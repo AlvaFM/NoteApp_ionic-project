@@ -29,7 +29,6 @@ export class UserService {
     return true;
   }
 
-  // Cambiado para recibir un objeto con nombre y contraseña
   async CrearUsuario(usuario: { nombre: string; contraseña: string }): Promise<boolean> {
     const usuarios = (await this._Storage?.get('usuarios')) || [];
     
@@ -37,7 +36,7 @@ export class UserService {
       return false;
     }
 
-    usuarios.push(usuario); // Usar el objeto completo
+    usuarios.push(usuario); 
     await this._Storage?.set('usuarios', usuarios);
     return true;
   }
@@ -97,7 +96,7 @@ export class UserService {
     return usuariosNotas[this.usuarioActual] || [];
   }
 
-  // Método para obtener el usuario actual
+  
   getUsuarioActual(): string {
     return this.usuarioActual;
   }

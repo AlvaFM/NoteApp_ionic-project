@@ -38,6 +38,7 @@ export class HomePage implements OnInit {
     if (nuevaNota !== '') {
       await this.userService.AgregarNotaUser(nuevaNota); 
       this.notasUsuarioActual = await this.userService.ObtenerNotas(); 
+      this.nuevaNota = '';
     } else {
      
       console.error('La nota no puede estar vacía.'); 
