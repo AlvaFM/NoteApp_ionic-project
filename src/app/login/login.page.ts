@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
 import { ToastController } from '@ionic/angular';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class LoginPage implements OnInit {
-
   nombre: string = '';
   contra: string = '';
   loading: boolean = false;
@@ -37,9 +36,33 @@ export class LoginPage implements OnInit {
   ngOnInit() { }
 
   async Iniciarsesion() {
+    
+    if (this.nombre.includes(' ')) {
+      const toast = await this.toastController.create({
+        message: 'El nombre de usuario no debe contener espacios.',
+        duration: 2000,
+        position: 'top',
+        color: 'danger'
+      });
+      toast.present();
+      return; 
+    }
+
+    
+    if (this.contra.trim() === '') {
+      const toast = await this.toastController.create({
+        message: 'La contraseña no puede estar vacía.',
+        duration: 2000,
+        position: 'top',
+        color: 'danger'
+      });
+      toast.present();
+      return; 
+    }
+
     this.loading = true;
     setTimeout(async () => {
-      if (this.userService.Iniciarsesion(this.nombre, this.contra)) {
+      if (await this.userService.Iniciarsesion(this.nombre, this.contra)) {
         this.router.navigate(['/home']);
       } else {
         const toast = await this.toastController.create({

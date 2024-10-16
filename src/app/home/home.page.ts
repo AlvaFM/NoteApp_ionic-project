@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,22 +24,23 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
   nuevaNota: string = '';
   usuarioActual: string = '';
-  notasUsuarioActual: string[] = [];  
+  notasUsuarioActual: { id: number; contenido: string }[] = []; 
 
   constructor(private userService: UserService, private Router: Router) { }
 
-  ngOnInit() {
-    this.usuarioActual = this.userService.usuarioActual;
-    this.userService.CrearListaNotasUser();
-    this.notasUsuarioActual = this.userService.ObtenerNotas();
+  async ngOnInit() { 
+    this.usuarioActual = this.userService.getUsuarioActual(); 
+    await this.userService.CrearListaNotasUser(); 
+    this.notasUsuarioActual = await this.userService.ObtenerNotas(); 
   }
 
-  agregarNota(nuevaNota: string) {
+  async agregarNota(nuevaNota: string) {
     if (nuevaNota !== '') {
-      this.userService.AgregarNotaUser(nuevaNota);
-      this.notasUsuarioActual = this.userService.ObtenerNotas();
+      await this.userService.AgregarNotaUser(nuevaNota); 
+      this.notasUsuarioActual = await this.userService.ObtenerNotas(); 
     } else {
-      // Mostrar mensaje con Toast
+     
+      console.error('La nota no puede estar vacía.'); 
     }
   }
   
@@ -47,4 +48,3 @@ export class HomePage implements OnInit {
     this.Router.navigate(['/login']);
   }
 }
-
