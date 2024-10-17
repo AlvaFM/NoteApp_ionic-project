@@ -24,28 +24,62 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
   nuevaNota: string = '';
   usuarioActual: string = '';
-  notasUsuarioActual: { id: number; contenido: string }[] = []; 
+  notasUsuarioActual: { id: number; contenido: string; editando?: boolean }[] = [];
+  nuevoContenido: string = '';
 
-  constructor(private userService: UserService, private Router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
-  async ngOnInit() { 
-    this.usuarioActual = this.userService.getUsuarioActual(); 
-    await this.userService.CrearListaNotasUser(); 
-    this.notasUsuarioActual = await this.userService.ObtenerNotas(); 
+  async ngOnInit() {
+    this.usuarioActual = this.userService.getUsuarioActual();
+    await this.userService.CrearListaNotasUser();
+    this.notasUsuarioActual = await this.userService.ObtenerNotas();
   }
 
   async agregarNota(nuevaNota: string) {
     if (nuevaNota !== '') {
-      await this.userService.AgregarNotaUser(nuevaNota); 
-      this.notasUsuarioActual = await this.userService.ObtenerNotas(); 
+      await this.userService.AgregarNotaUser(nuevaNota);
+      this.notasUsuarioActual = await this.userService.ObtenerNotas();
       this.nuevaNota = '';
     } else {
-     
-      console.error('La nota no puede estar vacía.'); 
+      console.error('La nota no puede estar vacía.');
     }
   }
-  
+
+  async eliminarNota(id: number) {
+    await this.userService.EliminarNota(id);
+    this.notasUsuarioActual = await this.userService.ObtenerNotas();
+  }
+
+  async editarNota(id: number, nuevoContenido: string) {
+    if (nuevoContenido.trim() !== '') {
+      await this.userService.ModificarNota(id, nuevoContenido);
+      this.notasUsuarioActual = await this.userService.ObtenerNotas();
+    } else {
+      console.error('El contenido no puede estar vacío.');
+    }
+  }
+
+  iniciarEdicion(nota: { id: number; contenido: string; editando?: boolean }) {
+    nota.editando = true;
+    this.nuevoContenido = nota.contenido; 
+  }
+
+  cancelarEdicion(nota: { id: number; editando?: boolean }) {
+    nota.editando = false;
+    this.nuevoContenido = ''; 
+  }
+
+  async guardarEdicion(nota: { id: number; editando?: boolean }) {
+    if (this.nuevoContenido.trim() !== '') {
+      await this.editarNota(nota.id, this.nuevoContenido);
+      nota.editando = false;
+      this.nuevoContenido = ''; 
+    } else {
+      console.error('El contenido no puede estar vacío.');
+    }
+  }
+
   cerrarSesion() {
-    this.Router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 }

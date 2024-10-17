@@ -14,8 +14,30 @@
     <p>Aquí están tus notas:</p>
 
     <ion-list>
-      <ion-item *ngFor="let nota of notasUsuarioActual" [@slideInOut]>
-        {{ nota.contenido }}
+      <ion-item *ngFor="let nota of notasUsuarioActual" lines="none">
+        <div style="width: 100%;">
+          
+          <div *ngIf="!nota.editando">
+            <h5>{{ nota.contenido }}</h5>
+
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+              <ion-button color="dark" (click)="iniciarEdicion(nota)">Editar</ion-button>
+              <ion-button color="dark" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
+            </div>
+          </div>
+
+          
+          <div *ngIf="nota.editando">
+            <ion-input [(ngModel)]="nuevoContenido" placeholder="Editar nota"></ion-input>
+
+            
+            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+              <ion-button color="dark" (click)="guardarEdicion(nota)">Guardar</ion-button>
+              <ion-button color="dark" (click)="cancelarEdicion(nota)">Cancelar</ion-button>
+            </div>
+          </div>
+        </div>
       </ion-item>
     </ion-list>
 

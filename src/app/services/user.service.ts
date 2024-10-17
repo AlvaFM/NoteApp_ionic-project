@@ -79,8 +79,9 @@ export class UserService {
     
     if (this.usuarioActual && usuariosNotas[this.usuarioActual]) {
       const nuevaNota = {
-        id: this.notaIdCounter++, // Asignar ID único
+        id: this.notaIdCounter++, 
         contenido: nota
+        
       };
       usuariosNotas[this.usuarioActual].push(nuevaNota);
       await this._Storage?.set('usuariosNotas', usuariosNotas);
@@ -95,6 +96,42 @@ export class UserService {
     const usuariosNotas = (await this._Storage?.get('usuariosNotas')) || {};
     return usuariosNotas[this.usuarioActual] || [];
   }
+
+  async ModificarNota(id: number, nuevoContenido: string): Promise<boolean> {
+    const usuariosNotas = (await this._Storage?.get('usuariosNotas')) || {};
+    const notas = usuariosNotas[this.usuarioActual] || [];
+  
+    for (const nota of notas) {
+      if (nota.id === id) {
+        nota.contenido = nuevoContenido; 
+        await this._Storage?.set('usuariosNotas', usuariosNotas);  
+        return true;
+      }
+    }
+  
+    return false;  
+  }
+
+  async EliminarNota(id: number): Promise<boolean> {
+    const usuariosNotas = (await this._Storage?.get('usuariosNotas')) || {};
+    const notas: { id: number; contenido: string }[] = usuariosNotas[this.usuarioActual] || [];
+  
+    const indice = notas.findIndex(nota => nota.id === id);  
+  
+    if (indice !== -1) {
+      notas.splice(indice, 1); 
+      usuariosNotas[this.usuarioActual] = notas;  
+      await this._Storage?.set('usuariosNotas', usuariosNotas);  
+      return true;
+    }
+  
+    return false;  
+  }
+  
+  
+  
+  
+
 
   
   getUsuarioActual(): string {
