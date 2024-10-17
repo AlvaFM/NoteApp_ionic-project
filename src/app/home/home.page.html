@@ -18,7 +18,7 @@
         <div style="width: 100%;">
           
           <div *ngIf="!nota.editando">
-            <h5>{{ nota.contenido }}</h5>
+            <p>{{ nota.contenido }}</p>
 
             
             <div style="display: flex; justify-content: space-between; margin-top: 10px;">
@@ -30,6 +30,7 @@
           
           <div *ngIf="nota.editando">
             <ion-input [(ngModel)]="nuevoContenido" placeholder="Editar nota"></ion-input>
+            
 
             
             <div style="display: flex; justify-content: space-between; margin-top: 10px;">
