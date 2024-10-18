@@ -1,54 +1,66 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Bienvenido {{ usuarioActual }}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="cerrarSesion()">Cerrar sesión</ion-button>
+    <ion-buttons slot="start" >
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-title class="center-title">
+      Bienvenido {{ usuarioActual }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="container" [@slideInOut]>
-    <h2>¿Qué escribirás hoy?</h2>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Contenido del Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding center-content">
+      <h3>{{ usuarioActual }}</h3>
+      <ion-button expand="full" (click)="cerrarSesion()">Cerrar sesión</ion-button>
+    </ion-content>
+  </ion-menu>
 
-    <p>Aquí están tus notas:</p>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Notas</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-    <ion-list>
-      <ion-item *ngFor="let nota of notasUsuarioActual" lines="none">
-        <div style="width: 100%;">
-          
-          <div *ngIf="!nota.editando">
-            <p>{{ nota.contenido }}</p>
-
-            
-            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-              <ion-button color="dark" (click)="iniciarEdicion(nota)">Editar</ion-button>
-              <ion-button color="dark" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
+    <ion-content class="ion-padding center-content">
+      <h2>¿Qué escribirás hoy?</h2>
+      <p>Aquí están tus notas:</p>
+      <ion-list class="Notas"> 
+        <ion-item *ngFor="let nota of notasUsuarioActual" lines="none">
+          <div style="width: 100%;">
+            <div *ngIf="!nota.editando">
+              <p>{{ nota.contenido }}</p>
+              <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <ion-button color="dark" (click)="iniciarEdicion(nota)">Editar</ion-button>
+                <ion-button color="dark" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
+              </div>
+            </div>
+            <div *ngIf="nota.editando">
+              <ion-textarea [(ngModel)]="nuevoContenido" rows="3" placeholder="Editar nota"></ion-textarea>
+              <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <ion-button color="dark" (click)="guardarEdicion(nota)">Guardar</ion-button>
+                <ion-button color="dark" (click)="cancelarEdicion(nota)">Cancelar</ion-button>
+              </div>
             </div>
           </div>
+        </ion-item>
+      </ion-list>
 
-          
-          <div *ngIf="nota.editando">
-            <ion-input [(ngModel)]="nuevoContenido" placeholder="Editar nota"></ion-input>
-            
-
-            
-            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-              <ion-button color="dark" (click)="guardarEdicion(nota)">Guardar</ion-button>
-              <ion-button color="dark" (click)="cancelarEdicion(nota)">Cancelar</ion-button>
-            </div>
-          </div>
-        </div>
+      <ion-item>
+        <ion-label position="floating">Agregar nueva nota</ion-label>
+        <ion-textarea [(ngModel)]="nuevaNota" rows="3"></ion-textarea>
       </ion-item>
-    </ion-list>
 
-    <ion-item>
-      <ion-label position="floating">Agregar nueva nota</ion-label>
-      <ion-input [(ngModel)]="nuevaNota"></ion-input>
-    </ion-item>
-
-    <ion-button expand="full" (click)="agregarNota(nuevaNota)">
-      Agregar Nota
-    </ion-button>
+      <ion-button expand="full" (click)="agregarNota(nuevaNota)">
+        Agregar Nota
+      </ion-button>
+    </ion-content>
   </div>
 </ion-content>

@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -33,6 +34,7 @@ export class HomePage implements OnInit {
     this.usuarioActual = this.userService.getUsuarioActual();
     await this.userService.CrearListaNotasUser();
     this.notasUsuarioActual = await this.userService.ObtenerNotas();
+    
   }
 
   async agregarNota(nuevaNota: string) {
