@@ -50,8 +50,8 @@ ion-content {
   --background: #1a1a1a;
   color: white;
   display: flex;
-  flex-direction: column; // Cambiado para centrar todo el contenido verticalmente
-  align-items: center; // Centra horizontalmente
+  flex-direction: column; 
+  align-items: center; 
   text-align: center;
   height: 100%;
   padding: 20px; 
@@ -70,7 +70,7 @@ p {
 ion-list {
   margin-bottom: 20px;
   width: 100%;
-  max-width: 400px; // Aumentado para centrar
+  max-width: 400px; 
   display: flex;
   flex-direction: column;
   align-items: center;
