@@ -9,7 +9,7 @@
 }
 
 ion-header {
-  background: linear-gradient(45deg, #c0aafe, #86b6ff);
+  background: linear-gradient(45deg, #aafec5, #83c5ff);
   color: white;
 }
 
@@ -120,4 +120,10 @@ ion-button {
 .loading-container img {
   width: 100px; 
   height: auto;
+}
+
+.logo{
+  height: 100px;  
+  width: auto;  
+  max-width: 100%;
 }

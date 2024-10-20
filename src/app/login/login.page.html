@@ -1,14 +1,14 @@
 <!-- login.page.html -->
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>NoteApp</ion-title>
+    <ion-title>Dinotes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">NoteApp</ion-title>
+      <ion-title size="large"></ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -18,8 +18,9 @@
   </div>
 
   <div class="container" [@slideInOut]>
-    <h2>Bienvenido a NoteApp</h2>
-
+    <h2>Bienvenido a Dinotes</h2>
+    <img src="./assets/icon/Dinotes logo.png" alt="Dinotes Logo" class="logo"/>
+    <h5>Captura tus ideas antes de que se extingan.</h5>
     <div id="botones">
       <form (ngSubmit)="Iniciarsesion()">
         <ion-item>
@@ -41,10 +42,6 @@
       <ion-button expand="full" [routerLink]="['/restpass']">
         Olvidé mi contraseña
       </ion-button>
-    </div>
-
-    <div class="imgnote">
-      <img src="./assets/icon/cat note.png" alt="Cat Note Icon">
     </div>
   </div>
 </ion-content>
