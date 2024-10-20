@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -27,14 +27,39 @@ export class HomePage implements OnInit {
   usuarioActual: string = '';
   notasUsuarioActual: { id: number; contenido: string; editando?: boolean }[] = [];
   nuevoContenido: string = '';
+  isDarkMode: boolean = false; 
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private storage: Storage) {}
 
   async ngOnInit() {
+    await this.storage.create(); 
+    this.loadTheme(); 
     this.usuarioActual = this.userService.getUsuarioActual();
     await this.userService.CrearListaNotasUser();
     this.notasUsuarioActual = await this.userService.ObtenerNotas();
-    
+  }
+
+
+  async toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    this.applyTheme(this.isDarkMode);
+    await this.storage.set('darkMode', this.isDarkMode);
+  }
+
+ 
+  async loadTheme() {
+    const darkMode = await this.storage.get('darkMode');
+    this.isDarkMode = darkMode !== null ? darkMode : false;
+    this.applyTheme(this.isDarkMode);
+  }
+
+  applyTheme(isDark: boolean) {
+    const body = document.body;
+    if (isDark) {
+      body.classList.add('dark');
+    } else {
+      body.classList.remove('dark');
+    }
   }
 
   async agregarNota(nuevaNota: string) {

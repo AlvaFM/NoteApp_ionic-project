@@ -18,10 +18,11 @@
     </ion-header>
     <ion-content class="ion-padding center-content">
       <h3>{{ usuarioActual }}</h3>
-      <h1>Aqui se agregara mas contenido como:</h1>
-      <h2>Cambio de modo: claro/oscuro</h2>
-      <h3>Tambien una foto de perfil si se logra</h3>
-      <h3>Y configuraciones (Las que se nos ocurra)</h3>
+      <h4>Agregar foto de perfil</h4>
+      <h4>Activar modo claro u oscuro</h4>
+      <ion-button>
+        <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleTheme()"></ion-toggle>
+      </ion-button>
       <ion-button expand="full" (click)="cerrarSesion()">Cerrar sesión</ion-button>
     </ion-content>
   </ion-menu>
