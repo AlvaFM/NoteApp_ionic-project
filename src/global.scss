@@ -79,7 +79,7 @@ body { margin: 0; font-family: Roboto, "Indie Flower", cursive; }
 body {
   --ion-background-color: white ;
   --ion-text-color: rgb(159, 74, 74);
-  --ion-toolbar-color: linear-gradient(45deg, #aafec5, #83c5ff);
+  --ion-toolbar-color: #ffffff;
   --ion-list-color: #d4e0e1;
   ion-list {
     --background: #ffffff; 
@@ -111,7 +111,7 @@ body {
   }
   
   ion-button {
-    --background: #83c5ff; 
+    --background: #32a89b; 
     --color: rgb(0, 0, 0);
   }
 
@@ -128,6 +128,8 @@ body {
   
     ion-buttons {
       color: rgb(0, 0, 0); 
+      border-radius: 10px;
+      background-color: #32a89b;
     }
   }
   
@@ -200,8 +202,8 @@ ion-input {
 }
 
 ion-button {
-  --background: #83c5ff;
-  --background-activated: #555;
+  --background-color: #32a89b;
+  --background-activated: #146b69;
   --color: white;
   width: 100%;
   height: 3rem;
@@ -225,6 +227,8 @@ ion-toolbar {
 
   ion-buttons {
     color: white; 
+    border-radius: 10px;
+    background-color: #32a89b;
   }
 }
 
@@ -275,5 +279,5 @@ p {
 
 
 ion-toolbar{
-background-color: linear-gradient(45deg, #aafec5, #83c5ff);;
+background-color: linear-gradient(45deg, #aafec5, #83c5ff);
 } 
