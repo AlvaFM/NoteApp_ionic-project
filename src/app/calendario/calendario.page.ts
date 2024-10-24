@@ -1,45 +1,48 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; // Importa ActivatedRoute
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-calendario',
   templateUrl: 'calendario.page.html',
   styleUrls: ['calendario.page.scss'],
 })
-export class CalendarioPage {
-  selectedDate: string = new Date().toISOString().split('T')[0]; // Fecha actual
-  event: string = ''; // Evento a agregar
+export class CalendarioPage implements OnInit {
+  selectedDate: string = new Date().toISOString().split('T')[0]; // Fecha hoy
+  event: string = ''; //el evento se agrega
   events: { date: string; event: string }[] = []; // Lista de eventos
-  userId: string = ''; // Aquí se obtendrá el ID del usuario actual
+  userId: string = ''; // ID del usuario actual
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = params['userId']; // Obtén el userId desde los parámetros de la ruta
+      this.userId = params['userId']; 
+      this.loadEvents(); 
     });
-    this.loadEvents(); // Cargar eventos al iniciar el componente
   }
 
   selectDate(event: any) {
-    this.selectedDate = event.target.value; // Actualizar la fecha seleccionada
+    this.selectedDate = event.target.value;
   }
 
   addEvent() {
     if (this.event) {
       const newEvent = { date: this.selectedDate, event: this.event };
-      this.events.push(newEvent); // Agregar el nuevo evento a la lista
-      this.saveEvents(); // Guardar los eventos en localStorage
-      this.event = ''; // Limpiar el campo de entrada
+      this.events.push(newEvent);
+      this.saveEvents(); 
+      this.event = ''; 
     }
   }
 
   saveEvents() {
-    localStorage.setItem(`events_${this.userId}`, JSON.stringify(this.events)); // Guardar eventos en localStorage con clave única
+    localStorage.setItem(`events_${this.userId}`, JSON.stringify(this.events)); 
   }
 
   loadEvents() {
-    const storedEvents = localStorage.getItem(`events_${this.userId}`); // Cargar eventos desde localStorage con clave única
+    const storedEvents = localStorage.getItem(`events_${this.userId}`); 
     if (storedEvents) {
-      this.events = JSON.parse(storedEvents); // Parsear y asignar los eventos cargados
+      this.events = JSON.parse(storedEvents); 
     }
   }
 }
+  
