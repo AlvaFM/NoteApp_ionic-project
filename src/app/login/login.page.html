@@ -1,12 +1,6 @@
 <!-- login.page.html -->
 <ion-content [fullscreen]="true">
 
-  <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-title></ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <!-- Contenedor de carga -->
   <div *ngIf="loading" class="loading-container">
     <img src="./assets/icon/dino loading.gif" alt="Cargando...">
@@ -28,16 +22,20 @@
           <ion-label position="stacked">Contraseña</ion-label>
           <ion-input type="password" [(ngModel)]="contra" name="contraseña" required></ion-input>
         </ion-item>
-
+        <ion-row class="login-button">
         <ion-button expand="full" type="submit">Iniciar sesión</ion-button>
+      </ion-row>
+      <ion-row class="newuser-button">
+          <ion-button expand="full" [routerLink]="['/newuser']">
+            Crear Nuevo Usuario
+          </ion-button>
+        </ion-row>
       </form>
-
-      <ion-button expand="full" [routerLink]="['/newuser']">
-        Crear Nuevo Usuario
-      </ion-button>
+      <div class="forget-password">
       <ion-button expand="full" [routerLink]="['/restpass']">
         Olvidé mi contraseña
       </ion-button>
+    </div>
     </div>
   </div>
 </ion-content>

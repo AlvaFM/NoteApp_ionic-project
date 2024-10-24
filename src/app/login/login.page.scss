@@ -15,6 +15,7 @@
 ion-label{
 background-color: #146b69;
 background: #146b69;
+height: 20px;
 }
 
 ion-title {
@@ -52,14 +53,6 @@ h2 {
   font-size: 1.8rem;
 }
 
-#botones {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 20rem;
-  margin: 0 auto;
-}
 
 ion-item {
   --background: #146b69;
@@ -85,15 +78,15 @@ ion-input {
 }
 
 ion-button {
-  --background: #83c5ff;
-  --background-activated: #555;
+  --background: #005865; ;
+  --background-activated: #03353a;
   --color: white;
-  width: 100%;
-  width: 13rem;
-  height: 3rem;
-  border-radius: 20px;
+  width: 8rem;
+  height: 2.5rem;
+  border-radius: 20px; 
   margin-bottom: 15px;
 }
+
 
 .imgnote {
   margin-top: 20px;
@@ -129,4 +122,23 @@ ion-button {
   height: 300px;  
   width: auto;  
   max-width: 100%;
+}
+
+#botones {
+  width: 100%;
+  max-width: 20rem;
+  margin: 0 auto;
+  gap: 15px;
+  border-radius: 20px; 
+}
+
+#login-button{
+  flex-direction: row;
+  justify-content: left;
+  flex-wrap: nowrap;
+}
+
+#newuser-button{
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
 }
