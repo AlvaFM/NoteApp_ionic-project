@@ -1,14 +1,9 @@
 <!-- login.page.html -->
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Dinotes</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large"></ion-title>
+      <ion-title></ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -18,18 +13,19 @@
   </div>
 
   <div class="container" [@slideInOut]>
-    <h2>Bienvenido a Dinotes</h2>
+  
     <img src="./assets/icon/Dinotes logo.png" alt="Dinotes Logo" class="logo"/>
+    <h1>Bienvenido a Dinotes</h1>
     <h5>Captura tus ideas antes de que se extingan.</h5>
     <div id="botones">
       <form (ngSubmit)="Iniciarsesion()">
         <ion-item>
-          <ion-label position="floating">Nombre de usuario</ion-label>
+          <ion-label position="stacked">Nombre de usuario</ion-label>
           <ion-input type="text" [(ngModel)]="nombre" name="nombre" required></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Contraseña</ion-label>
+          <ion-label position="stacked">Contraseña</ion-label>
           <ion-input type="password" [(ngModel)]="contra" name="contraseña" required></ion-input>
         </ion-item>
 

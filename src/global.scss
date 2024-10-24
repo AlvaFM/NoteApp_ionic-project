@@ -71,7 +71,6 @@ $app-theme: mat.define-theme((
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Indie Flower", cursive; }
@@ -116,11 +115,12 @@ body {
   }
 
   ion-header {
-    background: linear-gradient(45deg, #aafec5, #83c5ff);
+  --background: linear-gradient(45deg, #aafec5, #83c5ff);
     color: rgb(0, 0, 0);
   }
   
   ion-toolbar {
+  --background: linear-gradient(45deg, #aafec5, #83c5ff);
     color: rgb(0, 0, 0); 
     display: flex;
     align-items: center;
