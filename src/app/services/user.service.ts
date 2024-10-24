@@ -127,12 +127,32 @@ export class UserService {
   
     return false;  
   }
+  async CrearListaEventosUser(): Promise<void> {
+    const usuariosEventos = (await this._Storage?.get('usuariosEventos')) || {};
+    
+    if (!usuariosEventos[this.usuarioActual]) {
+      usuariosEventos[this.usuarioActual] = [];
+      await this._Storage?.set('usuariosEventos', usuariosEventos);
+    }
+  }
   
+  async AgregarEventoUser(evento: { date: string; event: string }): Promise<boolean> {
+    const usuariosEventos = (await this._Storage?.get('usuariosEventos')) || {};
   
+    if (this.usuarioActual && usuariosEventos[this.usuarioActual]) {
+      usuariosEventos[this.usuarioActual].push(evento); // Agregar evento al usuario actual
+      await this._Storage?.set('usuariosEventos', usuariosEventos);  
+      return true;
+    } else {
+      alert('No se ha iniciado sesión');
+      return false;
+    }
+  }
   
-  
-
-
+  async ObtenerEventos(): Promise<{ date: string; event: string }[]> {
+    const usuariosEventos = (await this._Storage?.get('usuariosEventos')) || {};
+    return usuariosEventos[this.usuarioActual] || []; // Devolver eventos del usuario actual
+  }
   
   getUsuarioActual(): string {
     return this.usuarioActual;

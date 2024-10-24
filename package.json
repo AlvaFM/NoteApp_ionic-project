@@ -37,6 +37,7 @@
     "@ionic/angular": "^8.0.0",
     "@ionic/storage-angular": "^4.0.0",
     "cordova-sqlite-storage": "^6.1.0",
+    "gapi-client": "^0.0.3",
     "ionic2-calendar": "^2.5.0",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
