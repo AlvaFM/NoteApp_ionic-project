@@ -11,10 +11,7 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
-  {
-    path: 'note',
-    loadChildren: () => import('./note/note.module').then(m => m.NotePageModule)
-  },
+ 
   {
     path: 'newuser',
     loadChildren: () => import('./newuser/newuser.module').then(m => m.NewuserPageModule)

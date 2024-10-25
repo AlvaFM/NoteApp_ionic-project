@@ -1,146 +1,42 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-
-// Define the theme object.
-$app-theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: mat.$azure-palette,
-    tertiary: mat.$blue-palette,
-  ),
-  density: (
-    scale: 0,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-:root {
-  @include mat.all-component-themes($app-theme);
-}
-
-// Comment out the line below if you want to use the pre-defined typography utility classes.
-// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
-// @include mat.typography-hierarchy($app-theme);
-
-// Comment out the line below if you want to use the deprecated `color` inputs.
-// @include mat.color-variants-backwards-compatibility($app-theme);
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
-
-/* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
-
-/* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+html, body { 
+  height: 100%; 
+}
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Indie Flower", cursive; }
-
-body {
-  --ion-background-color: white ;
+body { 
+  margin: 0; 
+  font-family: Roboto, "Indie Flower", cursive; 
+  --ion-background-color: white;
   --ion-text-color: rgb(0, 0, 0);
-  --ion-toolbar-color: #ffffff;
-  --ion-list-color: #d4e0e1;
-  ion-list {
-    --background: #ffffff; 
-    padding: 15px;
-    border-radius: 10px; 
-  }
-
-  .Notas {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    width: 100%; 
-    max-width: 400px; 
-    margin: 0 auto; 
-    padding: 20px; 
-    border-radius: 10px; 
-    background-color: #f5f5f5;
-  }
   
-  
-  ion-item {
-    --background: #f5f5f5; 
-    --color: black; 
-    border: 1px solid #e0e0e0; 
-    padding: 10px;
-    border-radius: 5px; 
-    margin-bottom: 15px; 
-    
-  }
-  
-  ion-button {
-    --background: #32a89b; 
-    --color: rgb(0, 0, 0);
-  }
-
   ion-header {
-  --background: linear-gradient(45deg, #aafec5, #83c5ff);
+    --background: linear-gradient(45deg, #aafec5, #83c5ff);
     color: rgb(0, 0, 0);
   }
-  
+
   ion-toolbar {
-  --background: linear-gradient(45deg, #aafec5, #83c5ff);
-    color: rgb(0, 0, 0); 
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
-    ion-buttons {
-      color: rgb(0, 0, 0); 
-      border-radius: 10px;
-      background-color: #32a89b;
-    }
   }
-  
+
   ion-title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: rgb(0, 0, 0);
-    flex: 1;
     text-align: center;
+    color: rgb(0, 0, 0);
   }
-  
+
   ion-content {
     color: rgb(0, 0, 0);
     display: flex;
@@ -150,134 +46,98 @@ body {
     height: 100%;
     padding: 20px; 
   }
-  
+
   h2 {
     font-size: 1.8rem;
     margin-bottom: 10px;
-    color: black;
   }
-  
+
+
+  /* Aqui esta el p modificado que permite que las notas se vean bien y no escritas hasta el infinito */
+
   p {
     margin-bottom: 20px;
     font-size: 1.2rem;
-    color: black;
-  }  
-    
+    overflow-wrap: break-word; 
+    word-wrap: break-word; 
+    word-break: break-word; 
+    max-width: 100%; 
+    width: 100%; 
+    white-space: pre-wrap; 
+  }
+
+  .Notas {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    border-radius: 10px; 
+    background-color: #f5f5f5;
+  }
+
+  .nota-item {
+    width: 100%;
+    margin-bottom: 15px; 
+    border-radius: 10px;
+    background-color: #fff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .nota-content {
+    padding: 10px;
+    display: flex; 
+    flex-direction: column; 
+  }
+
+  .nota-buttons {
+    display: flex;
+    justify-content: flex-start; 
+    gap: 10px; 
+    margin-top: 10px; 
+  }
+
+  ion-button {
+    --background: #32a89b; 
+    --color: rgb(0, 0, 0);
+  }
 }
 
 body.dark {
   --ion-background-color: rgb(34, 35, 38);
   --ion-text-color: white;
 
-  ion-list {
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #1c1c1c; 
-    padding: 10px;
+  ion-header {
+    background: linear-gradient(45deg, #83c5ff, #aafec5);
   }
 
-  
-ion-item {
-  --background: #1c1c1c;
-  color: white;
-  margin-bottom: 20px;
-  width: 100%;
-  border-radius: 20px;
-  border: 1px solid #333;
-  padding: 10px; 
-  background-color: #1c1c1c;
-}
+  ion-title {
+    color: white;
+  }
 
-ion-input {
-  color: white;
-  width: 100%;
-  border-radius: 20px;
-  margin-bottom: 15px;
-  padding: 10px; 
-  background-color: #1c1c1c;
-}
+  ion-content {
+    color: white;
+    background-color: #1c1c1c;
+  }
 
-ion-button {
-  --background-color: #32a89b;
-  --background-activated: #146b69;
-  --color: white;
-  width: 100%;
-  height: 3rem;
-  border-radius: 5rem;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .Notas {
+    background-color: #1c1c1c;
+  }
 
-ion-header {
-  background: linear-gradient(45deg, #aafec5, #83c5ff);
-  color: white;
-}
+  .nota-item {
+    background-color: #2c2c2c; 
+    color: white;
+  }
 
-ion-toolbar {
-  color: white; 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  .nota-buttons {
+    color: white;
+  }
 
-  ion-buttons {
-    color: white; 
-    border-radius: 10px;
-    background-color: #32a89b;
+  h2, p {
+    color: white;
   }
 }
 
-ion-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  flex: 1;
-  text-align: center;
-}
 
-ion-content {
-  color: white;
-  display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  text-align: center;
-  height: 100%;
-  padding: 20px; 
-  background-color: #1c1c1c;
-}
-
-h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: white;
-}
-
-p {
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-  color: white;
-}
-
-.Notas {
-  display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  width: 100%; 
-  max-width: 400px; 
-  margin: 0 auto; 
-  padding: 20px; 
-  border-radius: 10px; 
-  background-color: #1c1c1c;
-}
-
-}
-
-
-ion-toolbar{
-background-color: linear-gradient(45deg, #aafec5, #83c5ff);
-} 

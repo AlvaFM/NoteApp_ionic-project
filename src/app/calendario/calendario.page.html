@@ -1,21 +1,29 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start" ion-button routerLink="/home" class="ion-no-padding">  
+      <ion-icon name="arrow-back"></ion-icon>
+      </ion-buttons>
     <ion-title>Calendario</ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label>Seleccionar Fecha</ion-label>
+  
+  
+  <ion-item>    
     <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="selectedDate" (ionChange)="selectDate($event)"></ion-datetime>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Evento</ion-label>
+    <ion-button slot="end" expand="full" routerLink="/agenda">Consultar feriados 2024</ion-button>
+    <h3>---</h3>
+    <ion-label position="floating">Escribe tu evento aqui</ion-label>
     <ion-input [(ngModel)]="event"></ion-input>
   </ion-item>
-
   <ion-button expand="full" (click)="addEvent()">Agregar Evento</ion-button>
+
+  
 
   <ion-list>
     <ion-item *ngFor="let e of events">
@@ -25,8 +33,8 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  <ion-button expand="full" routerLink="/home">
-    Volver al Inicio
-  </ion-button>
+  
+  
+  
   
 </ion-content>

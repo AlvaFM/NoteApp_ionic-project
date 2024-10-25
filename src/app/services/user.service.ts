@@ -7,7 +7,6 @@ import { Storage } from '@ionic/storage-angular';
 export class UserService {
   private _Storage: Storage | null = null;
   private usuarioActual: string = '';
-  private notaIdCounter: number = 0; 
 
   constructor(private storage: Storage) {
     this.init();
@@ -79,9 +78,8 @@ export class UserService {
     
     if (this.usuarioActual && usuariosNotas[this.usuarioActual]) {
       const nuevaNota = {
-        id: this.notaIdCounter++, 
+        id: Date.now() + Math.floor(Math.random() * 100000),
         contenido: nota
-        
       };
       usuariosNotas[this.usuarioActual].push(nuevaNota);
       await this._Storage?.set('usuariosNotas', usuariosNotas);
@@ -127,6 +125,7 @@ export class UserService {
   
     return false;  
   }
+
   async CrearListaEventosUser(): Promise<void> {
     const usuariosEventos = (await this._Storage?.get('usuariosEventos')) || {};
     
@@ -140,7 +139,7 @@ export class UserService {
     const usuariosEventos = (await this._Storage?.get('usuariosEventos')) || {};
   
     if (this.usuarioActual && usuariosEventos[this.usuarioActual]) {
-      usuariosEventos[this.usuarioActual].push(evento); // Agregar evento al usuario actual
+      usuariosEventos[this.usuarioActual].push(evento); 
       await this._Storage?.set('usuariosEventos', usuariosEventos);  
       return true;
     } else {
@@ -151,7 +150,7 @@ export class UserService {
   
   async ObtenerEventos(): Promise<{ date: string; event: string }[]> {
     const usuariosEventos = (await this._Storage?.get('usuariosEventos')) || {};
-    return usuariosEventos[this.usuarioActual] || []; // Devolver eventos del usuario actual
+    return usuariosEventos[this.usuarioActual] || []; 
   }
   
   getUsuarioActual(): string {

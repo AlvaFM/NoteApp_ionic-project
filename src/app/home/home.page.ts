@@ -27,7 +27,27 @@ export class HomePage implements OnInit {
   usuarioActual: string = '';
   notasUsuarioActual: { id: number; contenido: string; editando?: boolean }[] = [];
   nuevoContenido: string = '';
-  isDarkMode: boolean = false; 
+  isDarkMode: boolean = false;
+
+contenidovisible: string = ''; 
+estadoVentanaNota: string = ''; 
+
+
+AlternarVentanas(estado1: string, estado2: string) {
+  this.estadoVentanaNota = estado1;
+  this.contenidovisible  = estado2;
+}
+
+
+
+
+  
+
+
+
+
+
+ 
 
   constructor(private userService: UserService, private router: Router, private storage: Storage) {}
 
@@ -67,6 +87,7 @@ export class HomePage implements OnInit {
       await this.userService.AgregarNotaUser(nuevaNota);
       this.notasUsuarioActual = await this.userService.ObtenerNotas();
       this.nuevaNota = '';
+      this.AlternarVentanas('', '');
     } else {
       console.error('La nota no puede estar vacía.');
     }
