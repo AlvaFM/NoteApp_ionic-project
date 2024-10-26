@@ -8,8 +8,8 @@
   <div class="container" [@slideInOut]>
   
     <img src="./assets/icon/Dinotes logo.png" alt="Dinotes Logo" class="logo"/>
-    <h1>Bienvenido a Dinotes</h1>
-    <h5>Captura tus ideas antes de que se extingan.</h5>
+    <h1 id="title">Bienvenido a Dinotes</h1>
+    <h5 id="slogan">Captura tus ideas antes de que se extingan.</h5>
     <div id="botones">
       <form (ngSubmit)="Iniciarsesion()">
         <ion-item>
@@ -26,7 +26,7 @@
       </ion-row>
       <ion-row class="newuser-button">
           <ion-button expand="full" [routerLink]="['/newuser']">
-            Crear Nuevo Usuario
+            Crear nuevo usuario
           </ion-button>
         </ion-row>
       </form>

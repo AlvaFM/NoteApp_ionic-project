@@ -1,15 +1,6 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Crear Usuario</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-buttons slot="start" ion-button routerLink="/login" class="ion-no-padding">       
-      <ion-icon name="arrow-back"></ion-icon>
-      </ion-buttons>
       <ion-title size="large">Crear Usuario</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -18,20 +9,28 @@
     <h2>Crear Usuario</h2>
 
     <ion-item>
-      <ion-label position="floating">Nombre de Usuario</ion-label>
+      <ion-label position="stacked">Nombre de Usuario</ion-label>
       <ion-input [(ngModel)]="newuser" placeholder="Ingrese el nombre de usuario"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
+      <ion-label position="stacked">Contraseña</ion-label>
       <ion-input type="password" [(ngModel)]="password" placeholder="Ingrese la contraseña"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Confirmar Contraseña</ion-label>
+      <ion-label position="stacked">Confirmar Contraseña</ion-label>
       <ion-input type="password" [(ngModel)]="comfirmpassword" placeholder="Ingrese la contraseña"></ion-input>
     </ion-item>
 
     <ion-button expand="full" (click)="CrearUsuario()">Crear Usuario</ion-button>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/login" class="ion-no-padding">
+        <ion-icon name="arrow-back"></ion-icon>
+        <span>Volver</span>
+      </ion-button>
+    </ion-buttons>
+
   </div>
+
 </ion-content>

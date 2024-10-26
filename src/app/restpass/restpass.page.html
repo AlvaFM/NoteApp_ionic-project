@@ -1,12 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start" ion-button routerLink="/login" class="ion-no-padding">  
-      <ion-icon name="arrow-back"></ion-icon>
-      </ion-buttons>
-    <ion-title>Restablecer Contraseña</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     
@@ -35,6 +26,12 @@
       </ion-item>
 
       <ion-button expand="full" type="submit">Restablecer Contraseña</ion-button>
+      <ion-buttons slot="start">
+        <ion-button routerLink="/login" class="ion-no-padding">
+          <ion-icon name="arrow-back"></ion-icon>
+          <span>Volver</span>
+        </ion-button>
+      </ion-buttons>
     </form>
   </div>
 </ion-content>

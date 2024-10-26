@@ -14,12 +14,6 @@
   padding: 0;
 }
 
-ion-label{
-background-color: #146b69;
-background: #146b69;
-height: 20px;
-}
-
 ion-title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -69,6 +63,9 @@ ion-item {
 
 ion-label {
   color: #ccc;
+  padding-top: 0.5rem;
+  background-color: #146b69;
+  padding: 5%;
 }
 
 ion-input {
@@ -78,19 +75,24 @@ ion-input {
   padding: 8px;
   height: 30px;
   border: none;
+  padding-top: 2rem;
 }
 
 ion-button {
-  --background: #005865; ;
+  --background: #005865;
   --background-activated: #03353a;
   --color: white;
-  width: 8rem;
-  height: 2.5rem;
-  border-radius: 20px; 
+  width: 10rem;
+  height: 2rem;
   margin-bottom: 15px;
-  flex-direction: row;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 10px auto; 
 }
-
 
 .imgnote {
   margin-top: 20px;
@@ -120,21 +122,23 @@ ion-button {
 .loading-container img {
   width: 100px; 
   height: auto;
+  background-color: none;
+  background: none;
 }
 
 .logo{
-  height: 300px;  
+  height: 250px;  
   width: auto;  
   max-width: 100%;
+  padding-top: 10%;
 }
 
-#botones {
-  width: 100%;
-  max-width: 15rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 15px;
-  margin: 0 auto;
-  border-radius: 20px;
+#title {
+  text-shadow: 3px 3px 3px #013942; 
+  padding: 10px 0; 
+}
+
+#slogan {
+  text-shadow: 3px 3px 3px #013942; 
+  padding: 10px 0; 
 }
