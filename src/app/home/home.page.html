@@ -18,7 +18,9 @@
     </ion-header>
     <ion-content class="ion-padding center-content">
       <h3>{{ usuarioActual }}</h3>
-      <h4>Agregar foto de perfil</h4>
+      <ion-button expand="full" [routerLink]="['perfil' , { userId: usuarioActual }]">
+        Perfil
+      </ion-button>
       <h4>Activar modo claro u oscuro</h4>
       <ion-button>
         <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleTheme()"></ion-toggle>
