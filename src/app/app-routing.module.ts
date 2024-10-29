@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule),
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard] 
   },
  
   {
@@ -24,21 +24,22 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'agenda',
-    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule)
+    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule),
+    canActivate: [AuthGuard]
   },
-  {
-    path: 'agenda',
-    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule)
-  },
+  
+  
   {
     path: 'calendario',
-    loadChildren: () => import('./calendario/calendario.module').then( m => m.CalendarioPageModule)
+    loadChildren: () => import('./calendario/calendario.module').then( m => m.CalendarioPageModule),
+    canActivate: [AuthGuard]
   },
-  { path: 'calendario', loadChildren: () => import('./calendario/calendario.module').then(m => m.CalendarioPageModule) },
+  
 
 ];
 

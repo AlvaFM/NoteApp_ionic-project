@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +9,24 @@ export class UserService {
   private _Storage: Storage | null = null;
   private usuarioActual: string = '';
 
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, private authService: AuthService) { 
     this.init();
   }
 
   async init() {
     const storage = await this.storage.create();
     this._Storage = storage;
+
+    
+    this.usuarioActual = (await this._Storage.get('usuarioActual')) || '';
   }
 
+  setUsuarioActual(nombre: string) {
+    this.usuarioActual = nombre;
+    this._Storage?.set('usuarioActual', nombre); 
+  }
+
+  
   async VerificarUsuario(nombre: string): Promise<boolean> {
     const usuarios = await this._Storage?.get('usuarios') || [];
     for (const user of usuarios) {
@@ -44,7 +54,8 @@ export class UserService {
     const usuarios = await this._Storage?.get('usuarios') || [];
     for (const user of usuarios) {
       if (user.nombre === nombre && user.contraseña === contra) {
-        this.usuarioActual = user.nombre; 
+        this.setUsuarioActual(user.nombre); 
+        this.authService.login('token'); 
         return true;
       }
     }
@@ -153,7 +164,18 @@ export class UserService {
     return usuariosEventos[this.usuarioActual] || []; 
   }
   
-  getUsuarioActual(): string {
-    return this.usuarioActual;
+  async getUsuarioActual(): Promise<string | null> {
+    return await this._Storage?.get('usuarioActual') || null;
   }
+  
+
+
+  async CerrarSesion(): Promise<void> {
+    this.usuarioActual = ''; 
+    await this._Storage?.remove('usuarioActual'); 
+    this.authService.logout(); 
+  }
+
+
+
 }

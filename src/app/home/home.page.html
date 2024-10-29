@@ -18,7 +18,7 @@
     </ion-header>
     <ion-content class="ion-padding center-content">
       <h3>{{ usuarioActual }}</h3>
-      <ion-button expand="full" [routerLink]="['perfil' , { userId: usuarioActual }]">
+      <ion-button expand="full" [routerLink]="['perfil', { userId: usuarioActual }]">
         Perfil
       </ion-button>
       <h4>Activar modo claro u oscuro</h4>
@@ -40,71 +40,54 @@
     </ion-header>
 
     <ion-content class="ion-padding center-content">
-      
-     
       <h2>¿Qué escribirás hoy?</h2>
       <p>Aquí están tus notas:</p>
-<ion-list class="Notas" *ngIf="contenidovisible === ''">
-  
-  <ion-item *ngFor="let nota of notasUsuarioActual" lines="none" class="nota-item">
-    <div class="nota-content">
-      <div *ngIf="!nota.editando">
-        <p>{{ nota.contenido }}</p>
-        <div class="nota-buttons">
-          <ion-button color="dark" (click)="iniciarEdicion(nota)">Editar</ion-button>
-          <ion-button color="dark" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
-        </div>
+      <ion-list class="Notas" *ngIf="contenedovisible === ''">
+        <ion-item *ngFor="let nota of notasUsuarioActual" lines="none" class="nota-item">
+          <div class="nota-content">
+            <div *ngIf="!nota.editando">
+              <p>{{ nota.contenido }}</p>
+              <div class="nota-buttons">
+                <ion-button color="dark" (click)="iniciarEdicion(nota)">Editar</ion-button>
+                <ion-button color="dark" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
+              </div>
+            </div>
+            <div *ngIf="nota.editando">
+              <ion-textarea [(ngModel)]="nuevoContenido" rows="3" placeholder="Editar nota"></ion-textarea>
+              <div class="nota-buttons">
+                <ion-button color="dark" (click)="guardarEdicion(nota)">Guardar</ion-button>
+                <ion-button color="dark" (click)="cancelarEdicion(nota)">Cancelar</ion-button>
+              </div>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <ion-fab *ngIf="contenedovisible === ''" vertical="bottom" horizontal="end" slot="fixed" style="margin-bottom: 60px; margin-right: 16px;">
+        <ion-fab-button (click)="AlternarVentanas('Activada', 'Desactivar')">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      <div *ngIf="estadoVentanaNota === 'Activada'">
+        <ion-item>
+          <ion-label position="floating">Agregar nueva nota</ion-label>
+          <ion-textarea [(ngModel)]="nuevaNota" rows="3"></ion-textarea>
+        </ion-item>
+        
+        <ion-button expand="full" (click)="agregarNota(nuevaNota)">
+          Agregar Nota
+        </ion-button>
+        <ion-button expand="full" (click)="AlternarVentanas('', '')">
+          Cancelar
+        </ion-button>
       </div>
-      <div *ngIf="nota.editando">
-        <ion-textarea [(ngModel)]="nuevoContenido" rows="3" placeholder="Editar nota"></ion-textarea>
-        <div class="nota-buttons">
-          <ion-button color="dark" (click)="guardarEdicion(nota)">Guardar</ion-button>
-          <ion-button color="dark" (click)="cancelarEdicion(nota)">Cancelar</ion-button>
-        </div>
-      </div>
-    </div>
-  </ion-item>
-</ion-list>
-
-<!-- Este es el boton circular -->
-
-<ion-fab  *ngIf="contenidovisible === ''" 
-vertical="bottom" horizontal="end" slot="fixed" style="margin-bottom: 60px; margin-right: 16px;">
-  <ion-fab-button (click)="AlternarVentanas('Activada', 'Desactivar')">
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
-
-
-
-
-
-
-<div *ngIf="estadoVentanaNota === 'Activada'">
-  <ion-item>
-    <ion-label position="floating">Agregar nueva nota</ion-label>
-    <ion-textarea [(ngModel)]="nuevaNota" rows="3"></ion-textarea>
-  </ion-item>
-  
-  <ion-button expand="full" (click)="agregarNota(nuevaNota)">
-    Agregar Nota
-  </ion-button>
-  <ion-button expand="full" (click)="AlternarVentanas('', '')">
-    Cancelar
-  </ion-button>
-</div>
-
-      
-
-      
     </ion-content>
   </div>
 </ion-content>
-<!-- Aqui agregue el boton de footer -->
 
 <ion-footer>
-  <ion-toolbar >
-    <ion-button slot="end" *ngIf="contenidovisible === ''" (click)="AlternarVentanas('Activada', 'Desactivar')">Agregar Nota</ion-button>
+  <ion-toolbar>
+    <ion-button slot="end" *ngIf="contenedovisible === ''" (click)="AlternarVentanas('Activada', 'Desactivar')">Agregar Nota</ion-button>
   </ion-toolbar>
 </ion-footer>
-

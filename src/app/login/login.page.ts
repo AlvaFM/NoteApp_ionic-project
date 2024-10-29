@@ -76,4 +76,5 @@ export class LoginPage implements OnInit {
       this.loading = false;
     }, 2000); 
   }
+
 }

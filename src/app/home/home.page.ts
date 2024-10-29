@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -24,41 +25,23 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class HomePage implements OnInit {
   nuevaNota: string = '';
-  usuarioActual: string = '';
+  usuarioActual: string | null = null; 
   notasUsuarioActual: { id: number; contenido: string; editando?: boolean }[] = [];
   nuevoContenido: string = '';
   isDarkMode: boolean = false;
 
-contenidovisible: string = ''; 
-estadoVentanaNota: string = ''; 
+  contenedovisible: string = ''; 
+  estadoVentanaNota: string = ''; 
 
-
-AlternarVentanas(estado1: string, estado2: string) {
-  this.estadoVentanaNota = estado1;
-  this.contenidovisible  = estado2;
-}
-
-
-
-
-  
-
-
-
-
-
- 
-
-  constructor(private userService: UserService, private router: Router, private storage: Storage) {}
+  constructor(private userService: UserService, private router: Router, private storage: Storage, private auth: AuthService) {}
 
   async ngOnInit() {
     await this.storage.create(); 
     this.loadTheme(); 
-    this.usuarioActual = this.userService.getUsuarioActual();
+    this.usuarioActual = await this.userService.getUsuarioActual();
     await this.userService.CrearListaNotasUser();
     this.notasUsuarioActual = await this.userService.ObtenerNotas();
   }
-
 
   async toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
@@ -66,7 +49,6 @@ AlternarVentanas(estado1: string, estado2: string) {
     await this.storage.set('darkMode', this.isDarkMode);
   }
 
- 
   async loadTheme() {
     const darkMode = await this.storage.get('darkMode');
     this.isDarkMode = darkMode !== null ? darkMode : false;
@@ -112,22 +94,29 @@ AlternarVentanas(estado1: string, estado2: string) {
     this.nuevoContenido = nota.contenido; 
   }
 
-  cancelarEdicion(nota: { id: number; editando?: boolean }) {
-    nota.editando = false;
-    this.nuevoContenido = ''; 
-  }
-
-  async guardarEdicion(nota: { id: number; editando?: boolean }) {
+  async guardarEdicion(nota: { id: number; contenido: string; editando?: boolean }) {
     if (this.nuevoContenido.trim() !== '') {
-      await this.editarNota(nota.id, this.nuevoContenido);
-      nota.editando = false;
+      await this.editarNota(nota.id, this.nuevoContenido); 
+      nota.editando = false; 
       this.nuevoContenido = ''; 
     } else {
       console.error('El contenido no puede estar vacío.');
     }
   }
 
-  cerrarSesion() {
-    this.router.navigate(['/login']);
+  async cancelarEdicion(nota: { editando?: boolean }) {
+    nota.editando = false; 
+    this.nuevoContenido = ''; 
+  }
+
+  async cerrarSesion() {
+    await this.userService.CerrarSesion();
+    this.router.navigate(['/login']); 
+  }
+  
+
+  AlternarVentanas(contenido: string, estado: string) {
+    this.contenedovisible = contenido;
+    this.estadoVentanaNota = estado;
   }
 }
