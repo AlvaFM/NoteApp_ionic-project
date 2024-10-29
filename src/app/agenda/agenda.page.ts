@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HolidayService } from '../services/holiday.service'; // Asegúrate de importar el servicio
+import { HolidayService } from '../services/holiday.service'; 
 
 @Component({
   selector: 'app-agenda',
@@ -8,14 +8,14 @@ import { HolidayService } from '../services/holiday.service'; // Asegúrate de i
 })
 export class AgendaPage implements OnInit {
 
-  holidays: any[] = []; // Variable para almacenar los feriados
+  holidays: any[] = []; 
 
   constructor(private holidayService: HolidayService) { }
 
   ngOnInit() {
     this.holidayService.getHolidays().subscribe(data => {
       this.holidays = data;
-      console.log(this.holidays); // Para verificar que la respuesta esté llegando
+      console.log(this.holidays);
     });
   }
 }
