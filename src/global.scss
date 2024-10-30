@@ -52,9 +52,7 @@ body {
     margin-bottom: 10px;
   }
 
-
-  /* Aqui esta el p modificado que permite que las notas se vean bien y no escritas hasta el infinito */
-
+ 
   p {
     margin-bottom: 20px;
     font-size: 1.2rem;
@@ -92,20 +90,13 @@ body {
     flex-direction: column; 
   }
 
-  .nota-buttons {
-    display: flex;
-    justify-content: flex-start; 
-    gap: 10px; 
-    margin-top: 10px; 
-  }
-
   ion-button {
     --background: #32a89b; 
     --color: rgb(0, 0, 0);
   }
 
-  #calendario{
-    color:black;
+  #calendario {
+    color: black;
   }
 }
 
@@ -114,7 +105,7 @@ body.dark {
   --ion-text-color: white;
 
   ion-header {
-  --background: linear-gradient(45deg, #83c5ff, #aafec5);
+    --background: linear-gradient(45deg, #83c5ff, #aafec5);
   }
 
   ion-title {
@@ -135,17 +126,27 @@ body.dark {
     color: white;
   }
 
-  .nota-buttons {
-    color: white;
-  }
-
   h2, p {
     color: white;
   }
 
-  #calendario{
+  #calendario {
     --color: black !important;
-   }
+  }
+}
+.botonMas{
+  --background: #32a89b; 
+    --color: rgb(0, 0, 0);
+
 }
 
+.calendarioBkn {
+  background-color: white !important;
+  color: black !important;
+
+  ion-datetime {
+    --color: black !important;
+    --ion-text-color: black !important;
+  }
+}
 

@@ -18,9 +18,6 @@
     </ion-header>
     <ion-content class="ion-padding center-content">
       <h3>{{ usuarioActual }}</h3>
-      <ion-button expand="full" [routerLink]="['perfil', { userId: usuarioActual }]">
-        Perfil
-      </ion-button>
       <h4>Activar modo claro u oscuro</h4>
       <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleTheme()"></ion-toggle>
       <ion-button expand="full" [routerLink]="['/calendario', { userId: usuarioActual }]">
@@ -48,7 +45,10 @@
             <ion-button color="dark" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
           </div>
           <div *ngIf="nota.editando">
-            <ion-textarea [(ngModel)]="nuevoContenido" rows="3" placeholder="Editar nota"></ion-textarea>
+            
+            <ion-textarea [(ngModel)]="nuevoContenido" rows="6" placeholder="Editar nota">
+            --------------------------------------------------
+            </ion-textarea>
             <ion-button color="dark" (click)="guardarEdicion(nota)">Guardar</ion-button>
             <ion-button color="dark" (click)="cancelarEdicion(nota)">Cancelar</ion-button>
           </div>
@@ -56,7 +56,7 @@
       </ion-list>
 
       <ion-fab *ngIf="contenedovisible === 'listaNotas'" vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button (click)="AlternarVentanas()">
+        <ion-fab-button class="botonMas" (click)="AlternarVentanas()">
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>
       </ion-fab>

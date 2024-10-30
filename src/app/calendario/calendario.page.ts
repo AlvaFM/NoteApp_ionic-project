@@ -7,10 +7,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['calendario.page.scss'],
 })
 export class CalendarioPage implements OnInit {
-  selectedDate: string = new Date().toISOString().split('T')[0]; // Fecha hoy
-  event: string = ''; //el evento se agrega
-  events: { date: string; event: string }[] = []; // Lista de eventos
-  userId: string = ''; // ID del usuario actual
+  selectedDate: string = new Date().toISOString().split('T')[0]; 
+  event: string = ''; 
+  events: { date: string; event: string }[] = []; 
+  userId: string = ''; 
 
   constructor(private route: ActivatedRoute) {}
 

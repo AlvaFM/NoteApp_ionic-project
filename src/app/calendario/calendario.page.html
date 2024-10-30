@@ -11,9 +11,12 @@
 <ion-content id="calendario">
   
   
-  <ion-item>    
+  <ion-item class="calendarioBkn">  
+    
     <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="selectedDate" (ionChange)="selectDate($event)"></ion-datetime>
+    
   </ion-item>
+  
 
   <ion-item>
     <ion-button slot="end" expand="full" routerLink="/agenda">Consultar feriados 2024</ion-button>
