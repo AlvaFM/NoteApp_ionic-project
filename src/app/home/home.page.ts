@@ -25,19 +25,18 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomePage implements OnInit {
   nuevaNota: string = '';
-  usuarioActual: string | null = null; 
+  usuarioActual: string | null = null;
   notasUsuarioActual: { id: number; contenido: string; editando?: boolean }[] = [];
   nuevoContenido: string = '';
   isDarkMode: boolean = false;
-
-  contenedovisible: string = ''; 
-  estadoVentanaNota: string = ''; 
+  contenedovisible: string = 'listaNotas';
+  estadoVentanaNota: boolean = false;
 
   constructor(private userService: UserService, private router: Router, private storage: Storage, private auth: AuthService) {}
 
   async ngOnInit() {
-    await this.storage.create(); 
-    this.loadTheme(); 
+    await this.storage.create();
+    this.loadTheme();
     this.usuarioActual = await this.userService.getUsuarioActual();
     await this.userService.CrearListaNotasUser();
     this.notasUsuarioActual = await this.userService.ObtenerNotas();
@@ -65,11 +64,11 @@ export class HomePage implements OnInit {
   }
 
   async agregarNota(nuevaNota: string) {
-    if (nuevaNota !== '') {
+    if (nuevaNota.trim() !== '') {
       await this.userService.AgregarNotaUser(nuevaNota);
       this.notasUsuarioActual = await this.userService.ObtenerNotas();
       this.nuevaNota = '';
-      this.AlternarVentanas('', '');
+      this.AlternarVentanas();
     } else {
       console.error('La nota no puede estar vacía.');
     }
@@ -91,32 +90,31 @@ export class HomePage implements OnInit {
 
   iniciarEdicion(nota: { id: number; contenido: string; editando?: boolean }) {
     nota.editando = true;
-    this.nuevoContenido = nota.contenido; 
+    this.nuevoContenido = nota.contenido;
   }
 
   async guardarEdicion(nota: { id: number; contenido: string; editando?: boolean }) {
     if (this.nuevoContenido.trim() !== '') {
-      await this.editarNota(nota.id, this.nuevoContenido); 
-      nota.editando = false; 
-      this.nuevoContenido = ''; 
+      await this.editarNota(nota.id, this.nuevoContenido);
+      nota.editando = false;
+      this.nuevoContenido = '';
     } else {
       console.error('El contenido no puede estar vacío.');
     }
   }
 
-  async cancelarEdicion(nota: { editando?: boolean }) {
-    nota.editando = false; 
-    this.nuevoContenido = ''; 
+  cancelarEdicion(nota: { editando?: boolean }) {
+    nota.editando = false;
+    this.nuevoContenido = '';
   }
 
   async cerrarSesion() {
     await this.userService.CerrarSesion();
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/login']);
   }
-  
 
-  AlternarVentanas(contenido: string, estado: string) {
-    this.contenedovisible = contenido;
-    this.estadoVentanaNota = estado;
+  AlternarVentanas() {
+    this.estadoVentanaNota = !this.estadoVentanaNota;
+    this.contenedovisible = this.estadoVentanaNota ? 'nuevaNota' : 'listaNotas';
   }
 }
