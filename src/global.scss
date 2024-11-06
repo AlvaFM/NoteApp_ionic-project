@@ -13,9 +13,15 @@ html, body {
   height: 100%; 
 }
 
+.permanent-marker-regular {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 body { 
   margin: 0; 
-  font-family: Roboto, "Indie Flower", cursive; 
+  font-family: Roboto, "Permanent Maker", cursive; 
   --ion-background-color: white;
   --ion-text-color: rgb(0, 0, 0);
   

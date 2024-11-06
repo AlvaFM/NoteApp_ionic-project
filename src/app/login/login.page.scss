@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+.permanent-marker-regular {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 * {
   font-family: "Indie Flower", cursive;
@@ -59,23 +64,22 @@ ion-item {
   width: 100%;
   border: none;
   border-radius: 20px;
+  height: 65px;
 }
 
 ion-label {
   color: #ccc;
-  padding-top: 0.5rem;
   background-color: #146b69;
-  padding: 5%;
+  padding-top: 5%;
 }
 
 ion-input {
   color: rgb(255, 255, 255);
-  background: #146b69;
+  background: none;
   width: 100%;
-  padding: 8px;
-  height: 30px;
   border: none;
-  padding-top: 2rem;
+  padding-bottom: 5%;
+
 }
 
 ion-button {
@@ -139,6 +143,7 @@ ion-button {
 }
 
 #slogan {
-  text-shadow: 3px 3px 3px #013942; 
-  padding: 10px 0; 
+  text-shadow: 3px 3px 3px #003937; 
+  padding: 20px 0; 
+  color: white;
 }
