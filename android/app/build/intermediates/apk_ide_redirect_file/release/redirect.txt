@@ -1,2 +1,2 @@
 #- File Locator -
-listingFile=../../../../../../../../../../Desktop/release/output-metadata.json
+listingFile=../../../../../../../../../Juegos ps2/release/output-metadata.json
