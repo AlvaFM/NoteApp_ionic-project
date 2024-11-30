@@ -25,6 +25,10 @@
       </ion-button>
       <ion-button expand="full" (click)="cerrarSesion()">Cerrar sesión</ion-button>
     </ion-content>
+    <div class="gif-container" *ngIf="isLoggingOut">
+      <img src="assets/icon/dino-bye.gif" alt="Cerrando sesión" height="30%" width="auto" />
+      <h4>Hasta pronto :)</h4>
+    </div>
   </ion-menu>
 
   <div class="ion-page" id="main-content">
@@ -40,30 +44,20 @@
       <ion-list *ngIf="contenedovisible === 'listaNotas'">
         <ion-item *ngFor="let nota of notasUsuarioActual" lines="none">
           <div *ngIf="!nota.editando">
-            <p>{{ nota.fecha}}</p>
+            <p>{{ nota.fecha }}</p>
             <p>{{ nota.contenido }}</p>
 
             <ion-button color="dark" (click)="iniciarEdicion(nota)">Editar</ion-button>
             <ion-button color="dark" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
           </div>
           <div *ngIf="nota.editando">
-            
-            <ion-textarea [(ngModel)]="nuevoContenido" rows="6" placeholder="Editar nota">
-            
-            </ion-textarea>
-            
+            <ion-textarea [(ngModel)]="nuevoContenido" rows="6" placeholder="Editar nota"></ion-textarea>
             <ion-button color="dark" (click)="guardarEdicion(nota)">Guardar</ion-button>
             <ion-button color="dark" (click)="cancelarEdicion(nota)">Cancelar</ion-button>
             <h2 style="opacity: 0;">-----------------------------</h2>
           </div>
         </ion-item>
       </ion-list>
-
-      <ion-fab *ngIf="contenedovisible === 'listaNotas'" vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button class="botonMas" (click)="AlternarVentanas()">
-          <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
 
       <div *ngIf="contenedovisible === 'nuevaNota'">
         <ion-item>
@@ -76,5 +70,19 @@
       </div>
     </ion-content>
   </div>
+
+  <!-- Botón flotante para agregar nota -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="boton-flotante">
+    <ion-fab-button (click)="AlternarVentanas()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+  <!-- Aquí agregamos el contenedor del GIF en la parte inferior -->
+  <div class="gif-footer">
+    <img src="assets/icon/dino-gif.gif" alt="GIF final" />
+  </div>
 </ion-content>
+
+
 

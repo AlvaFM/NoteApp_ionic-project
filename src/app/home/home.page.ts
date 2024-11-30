@@ -33,8 +33,9 @@ export class HomePage implements OnInit {
   isDarkMode: boolean = false;
   contenedovisible: string = 'listaNotas';
   estadoVentanaNota: boolean = false;
+  isLoggingOut: boolean = false;
 
-  constructor(private userService: UserService, private router: Router, private storage: Storage, private auth: AuthService) {}
+  constructor(private userService: UserService, private router: Router, private storage: Storage, private authService: AuthService,) {}
 
   async ngOnInit() {
     await this.storage.create();
@@ -110,10 +111,16 @@ export class HomePage implements OnInit {
     this.nuevoContenido = '';
   }
 
-  async cerrarSesion() {
-    await this.userService.CerrarSesion();
-    this.router.navigate(['/login']);
-  }
+  cerrarSesion() {
+    this.isLoggingOut = true;
+  
+    this.authService.logout();
+  
+    setTimeout(() => {
+      this.isLoggingOut = false; 
+      this.router.navigate(['/login']); 
+    }, 3000); 
+  }  
 
   AlternarVentanas() {
     this.estadoVentanaNota = !this.estadoVentanaNota;

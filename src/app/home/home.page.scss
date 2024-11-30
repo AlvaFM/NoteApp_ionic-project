@@ -14,3 +14,50 @@ body{
 ion-header {
   --background: linear-gradient(45deg, #83c5ff, #aafec5) !important;
   }
+
+  .gif-logout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none; 
+    z-index: 9999;
+  }
+  
+  .gif-logout img {
+    width: 50px !important;
+    height: auto !important; 
+  }  
+
+.gif-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; 
+  height: 200px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  background-color: transparent; 
+  padding-bottom: 10%;
+}
+
+.gif-footer img {
+  width: 100%;
+  height: auto; 
+}
+ion-content {
+  padding-bottom: 200px; 
+}
+
+.boton-flotante {
+  position: absolute;
+  z-index: 1; 
+  bottom: 10px; 
+  right: 10px;
+}
