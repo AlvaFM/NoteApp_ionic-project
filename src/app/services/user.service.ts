@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { AuthService } from './auth.service';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,9 @@ export class UserService {
   private _Storage: Storage | null = null;
   private usuarioActual: string = '';
 
-  constructor(private storage: Storage, private authService: AuthService) { 
+  constructor(private storage: Storage, private authService: AuthService
+    , private datePipe: DatePipe
+  ) { 
     this.init();
   }
 
@@ -90,9 +93,12 @@ export class UserService {
     if (this.usuarioActual && usuariosNotas[this.usuarioActual]) {
       const nuevaNota = {
         id: Date.now() + Math.floor(Math.random() * 100000),
-        contenido: nota
+        contenido: nota,
+        fecha: new Date().toISOString() 
       };
-      usuariosNotas[this.usuarioActual].push(nuevaNota);
+      
+     
+      usuariosNotas[this.usuarioActual].unshift(nuevaNota); 
       await this._Storage?.set('usuariosNotas', usuariosNotas);
       return true;
     } else {
@@ -100,11 +106,29 @@ export class UserService {
       return false;
     }
   }
-
-  async ObtenerNotas(): Promise<{ id: number; contenido: string }[]> {
+  
+  async ObtenerNotas(): Promise<{ id: number; contenido: string; fecha: string }[]> {
     const usuariosNotas = (await this._Storage?.get('usuariosNotas')) || {};
-    return usuariosNotas[this.usuarioActual] || [];
+    const notas = usuariosNotas[this.usuarioActual] || [];
+    const notasConFecha = notas.filter((nota: { fecha: string }) => {
+      return nota.fecha && !isNaN(new Date(nota.fecha).getTime());
+    });
+    notasConFecha.forEach((nota: { fecha: string }) => {
+      nota.fecha = this.datePipe.transform(nota.fecha, 'dd/MM/yy') || '';
+    });
+    return notasConFecha.sort((a: { fecha: string }, b: { fecha: string }) => {
+      return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
+    });
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   async ModificarNota(id: number, nuevoContenido: string): Promise<boolean> {
     const usuariosNotas = (await this._Storage?.get('usuariosNotas')) || {};
@@ -176,6 +200,12 @@ export class UserService {
     this.authService.logout(); 
   }
 
+
+  async clearStorage(): Promise<void> {
+    if (this._Storage) {
+      await this._Storage.clear();
+    }
+  }
 
 
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { AuthService } from '../services/auth.service';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -26,7 +27,8 @@ import { AuthService } from '../services/auth.service';
 export class HomePage implements OnInit {
   nuevaNota: string = '';
   usuarioActual: string | null = null;
-  notasUsuarioActual: { id: number; contenido: string; editando?: boolean }[] = [];
+  notasUsuarioActual: { id: number; contenido: string; fecha: string; editando?: boolean }[] = [];
+
   nuevoContenido: string = '';
   isDarkMode: boolean = false;
   contenedovisible: string = 'listaNotas';

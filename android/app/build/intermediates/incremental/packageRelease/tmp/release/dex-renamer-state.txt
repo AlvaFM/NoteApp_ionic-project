@@ -1,4 +1,4 @@
-#Thu Nov 28 21:35:59 CLST 2024
+#Sat Nov 30 03:47:37 CLST 2024
 base.0=C\:\\Users\\alvaro\\Documents\\GitHub\\NoteApp_ionic-project\\NoteApp_ionic-project\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
 base.1=C\:\\Users\\alvaro\\Documents\\GitHub\\NoteApp_ionic-project\\NoteApp_ionic-project\\android\\app\\build\\intermediates\\global_synthetics_dex\\release\\classes.dex
 base.2=C\:\\Users\\alvaro\\Documents\\GitHub\\NoteApp_ionic-project\\NoteApp_ionic-project\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex

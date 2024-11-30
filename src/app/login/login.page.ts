@@ -77,4 +77,8 @@ export class LoginPage implements OnInit {
     }, 2000); 
   }
 
+  limpiarAlmacenamiento() {
+    this.userService.clearStorage();
+  }
+
 }

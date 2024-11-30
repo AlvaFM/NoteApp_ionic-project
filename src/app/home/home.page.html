@@ -40,7 +40,9 @@
       <ion-list *ngIf="contenedovisible === 'listaNotas'">
         <ion-item *ngFor="let nota of notasUsuarioActual" lines="none">
           <div *ngIf="!nota.editando">
+            <p>{{ nota.fecha}}</p>
             <p>{{ nota.contenido }}</p>
+
             <ion-button color="dark" (click)="iniciarEdicion(nota)">Editar</ion-button>
             <ion-button color="dark" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
           </div>
