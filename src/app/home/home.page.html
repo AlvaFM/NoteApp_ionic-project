@@ -21,7 +21,7 @@
       <h4>Activar modo claro u oscuro</h4>
       <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleTheme()"></ion-toggle>
       <ion-button expand="full" [routerLink]="['/calendario', { userId: usuarioActual }]">
-        Ir al Calendario
+        Ir al calendario
       </ion-button>
       <ion-button expand="full" (click)="cerrarSesion()">Cerrar sesión</ion-button>
     </ion-content>
