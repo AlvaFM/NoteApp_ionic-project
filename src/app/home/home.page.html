@@ -47,10 +47,12 @@
           <div *ngIf="nota.editando">
             
             <ion-textarea [(ngModel)]="nuevoContenido" rows="6" placeholder="Editar nota">
-            --------------------------------------------------
+            
             </ion-textarea>
+            
             <ion-button color="dark" (click)="guardarEdicion(nota)">Guardar</ion-button>
             <ion-button color="dark" (click)="cancelarEdicion(nota)">Cancelar</ion-button>
+            <h2 style="opacity: 0;">-----------------------------</h2>
           </div>
         </ion-item>
       </ion-list>
