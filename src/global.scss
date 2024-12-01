@@ -111,8 +111,13 @@ body.dark {
   --ion-background-color: rgb(34, 35, 38);
   --ion-text-color: white;
 
-  ion-header {
-    --background: linear-gradient(45deg, #83c5ff, #aafec5);
+  
+  ion-toolbar {
+    --background: linear-gradient(45deg, #4f8a6f, #2a578a);
+
+
+
+
   }
 
   ion-title {

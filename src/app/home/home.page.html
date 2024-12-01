@@ -44,7 +44,7 @@
       <ion-list *ngIf="contenedovisible === 'listaNotas'">
         <ion-item *ngFor="let nota of notasUsuarioActual" lines="none">
           <div *ngIf="!nota.editando">
-            <p>{{ nota.fecha }}</p>
+            <p style="opacity: 0.7; font-size: 0.9em;">{{ nota.fecha }}</p>
             <p>{{ nota.contenido }}</p>
 
             <ion-button color="dark" (click)="iniciarEdicion(nota)">Editar</ion-button>
@@ -71,9 +71,9 @@
     </ion-content>
   </div>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="boton-flotante">
-    <ion-fab-button (click)="AlternarVentanas()">
-      <ion-icon name="add"></ion-icon>
+  <ion-fab *ngIf="contenedovisible === 'listaNotas'" vertical="bottom" horizontal="end" slot="fixed" class="boton-flotante">
+    <ion-fab-button class="botonMas"  (click)="AlternarVentanas()">
+      <ion-icon name="create-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   
