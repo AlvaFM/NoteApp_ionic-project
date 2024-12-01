@@ -6,7 +6,6 @@ import { Storage } from '@ionic/storage-angular';
 import { AuthService } from '../services/auth.service';
 import { LocalNotifications } from '@capacitor/local-notifications';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -29,7 +28,6 @@ export class HomePage implements OnInit {
   nuevaNota: string = '';
   usuarioActual: string | null = null;
   notasUsuarioActual: { id: number; contenido: string; fecha: string; editando?: boolean }[] = [];
-
   nuevoContenido: string = '';
   isDarkMode: boolean = false;
   contenedovisible: string = 'listaNotas';
@@ -44,6 +42,7 @@ export class HomePage implements OnInit {
     this.usuarioActual = await this.userService.getUsuarioActual();
     await this.userService.CrearListaNotasUser();
     this.notasUsuarioActual = await this.userService.ObtenerNotas();
+    this.scheduleWelcomeNotification();
   }
 
   async toggleTheme() {
@@ -67,12 +66,34 @@ export class HomePage implements OnInit {
     }
   }
 
+  async scheduleWelcomeNotification() {
+    const permission = await LocalNotifications.requestPermissions();
+    if (permission.display !== 'granted') {
+      console.error('Permiso denegado para notificaciones.');
+      return;
+    }
+
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          id: Date.now(),
+          title: '¡Bienvenido!',
+          body: 'Es un gusto verte de vuelta :)',
+          schedule: { at: new Date() },
+          smallIcon: 'ic_stat_icon_config_sample',
+          sound: 'beep.wav',
+        },
+      ],
+    });
+  }
+
   async agregarNota(nuevaNota: string) {
     if (nuevaNota.trim() !== '') {
       await this.userService.AgregarNotaUser(nuevaNota);
       this.notasUsuarioActual = await this.userService.ObtenerNotas();
       this.nuevaNota = '';
       this.AlternarVentanas();
+      await this.scheduleNotification(nuevaNota);
     } else {
       console.error('La nota no puede estar vacía.');
     }
@@ -114,39 +135,36 @@ export class HomePage implements OnInit {
 
   cerrarSesion() {
     this.isLoggingOut = true;
-  
     this.authService.logout();
-  
     setTimeout(() => {
       this.isLoggingOut = false; 
       this.router.navigate(['/login']); 
     }, 3000); 
-  }  
+  }
 
   AlternarVentanas() {
     this.estadoVentanaNota = !this.estadoVentanaNota;
     this.contenedovisible = this.estadoVentanaNota ? 'nuevaNota' : 'listaNotas';
   }
 
-async scheduleNotification() {
-  const permission = await LocalNotifications.requestPermissions();
-  if (permission.display !== 'granted') {
-    console.error('Permiso denegado para notificaciones.');
-    return;
+  async scheduleNotification(contenido: string) {
+    const permission = await LocalNotifications.requestPermissions();
+    if (permission.display !== 'granted') {
+      console.error('Permiso denegado para notificaciones.');
+      return;
+    }
+
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          id: Date.now(),
+          title: '¡Nueva Nota!',
+          body: `Has agregado una nueva nota: "${contenido}"`,
+          schedule: { at: new Date() },
+          smallIcon: 'ic_stat_icon_config_sample',
+          sound: 'beep.wav',
+        },
+      ],
+    });
   }
-
-
-  await LocalNotifications.schedule({
-    notifications: [
-      {
-        id: 1,
-        title: '¡Hola!',
-        body: 'Esta es una notificación local.',
-        schedule: { at: new Date(new Date().getTime() + 10) }, 
-        smallIcon: 'ic_stat_icon_config_sample', 
-        sound: 'beep.wav', 
-      },
-    ],
-  });
-}
 }
