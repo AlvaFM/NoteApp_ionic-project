@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { AuthService } from '../services/auth.service';
+import { LocalNotifications } from '@capacitor/local-notifications';
 
 
 @Component({
@@ -126,4 +127,26 @@ export class HomePage implements OnInit {
     this.estadoVentanaNota = !this.estadoVentanaNota;
     this.contenedovisible = this.estadoVentanaNota ? 'nuevaNota' : 'listaNotas';
   }
+
+async scheduleNotification() {
+  const permission = await LocalNotifications.requestPermissions();
+  if (permission.display !== 'granted') {
+    console.error('Permiso denegado para notificaciones.');
+    return;
+  }
+
+
+  await LocalNotifications.schedule({
+    notifications: [
+      {
+        id: 1,
+        title: '¡Hola!',
+        body: 'Esta es una notificación local.',
+        schedule: { at: new Date(new Date().getTime() + 10) }, 
+        smallIcon: 'ic_stat_icon_config_sample', 
+        sound: 'beep.wav', 
+      },
+    ],
+  });
+}
 }
