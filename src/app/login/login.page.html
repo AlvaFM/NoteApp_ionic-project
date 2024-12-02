@@ -15,7 +15,7 @@
       ¡Bienvenido a Dinotes!<br>Captura tus ideas<br> antes de que se extingan.
     </h5>
     
-    <div id="botones">
+    <div>
       <form (ngSubmit)="Iniciarsesion()">
         <ion-item>
           <ion-label position="stacked">Nombre de usuario</ion-label>
@@ -25,22 +25,20 @@
         <ion-item>
           <ion-label position="stacked">Contraseña</ion-label>
           <ion-input type="password" [(ngModel)]="contra" name="contraseña" required></ion-input>
-        </ion-item>
-        <ion-row class="login-button">
+        </ion-item>     
+      </form>
+      <div id="botones">
+      <ion-row class="login-button">
         <ion-button expand="full" type="submit">Iniciar sesión</ion-button>
         <ion-button expand="full" [routerLink]="['/newuser']">
           Añadir usuario
         </ion-button>
       </ion-row>
-      <ion-row>
-        
-      </ion-row>
-      </form>
       <div class="forget-password">
       <ion-button expand="full" [routerLink]="['/restpass']">
         Olvidé mi contraseña
       </ion-button>
-  
+  </div>
     </div>
     </div>
   </div>
