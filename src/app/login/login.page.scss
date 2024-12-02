@@ -85,16 +85,6 @@ ion-input {
 }
 
 
-ion-button {
-  --background: #005865; 
-  --color: white; 
-  padding: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding-top: 0;
-}
 
 
 .imgnote {
@@ -178,13 +168,15 @@ ion-button {
   }
 }
 
-#botones{
-  width: 50%;
-  height: 2rem;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  display: flex;
+
+ion-button {
+  --background: #005865;
+  --color: white;
+  justify-content: center;
+  height: 55px; 
   margin-left: auto;
   margin-right: auto;
+  width: 70%;
+  padding-top: 0;
+  border-radius: 25px;
 }

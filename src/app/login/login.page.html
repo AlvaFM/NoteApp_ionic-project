@@ -25,21 +25,14 @@
         <ion-item>
           <ion-label position="stacked">Contraseña</ion-label>
           <ion-input type="password" [(ngModel)]="contra" name="contraseña" required></ion-input>
-        </ion-item>     
+        </ion-item>
+        <ion-row >
+          <ion-button expand="full" type="submit">Iniciar sesión</ion-button>
+          <ion-button expand="full" [routerLink]="['/newuser']">Añadir usuario</ion-button>
+          <ion-button expand="full" [routerLink]="['/restpass']">Olvidé mi contraseña</ion-button>
+        </ion-row>     
       </form>
-      <div id="botones">
-      <ion-row class="login-button">
-        <ion-button expand="full" type="submit">Iniciar sesión</ion-button>
-        <ion-button expand="full" [routerLink]="['/newuser']">
-          Añadir usuario
-        </ion-button>
-      </ion-row>
-      <div class="forget-password">
-      <ion-button expand="full" [routerLink]="['/restpass']">
-        Olvidé mi contraseña
-      </ion-button>
-  </div>
-    </div>
+
     </div>
   </div>
 
