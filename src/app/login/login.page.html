@@ -12,9 +12,9 @@
 
   <div class="container" [@slideInOut]>
     <h5 id="slogan">
-      Bienvenido a Dinotes!
-      Captura tus ideas antes de que se extingan.
+      ¡Bienvenido a Dinotes!<br>Captura tus ideas<br> antes de que se extingan.
     </h5>
+    
     <div id="botones">
       <form (ngSubmit)="Iniciarsesion()">
         <ion-item>
@@ -29,7 +29,7 @@
         <ion-row class="login-button">
         <ion-button expand="full" type="submit">Iniciar sesión</ion-button>
         <ion-button expand="full" [routerLink]="['/newuser']">
-          Nuevo usuario
+          Añadir usuario
         </ion-button>
       </ion-row>
       <ion-row>

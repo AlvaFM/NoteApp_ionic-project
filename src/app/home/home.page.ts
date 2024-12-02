@@ -36,9 +36,11 @@ export class HomePage implements OnInit {
   usuarioActual: string | null = null;
   notasUsuarioActual: { id: number; contenido: string; fecha: string; editando?: boolean,imgUrl?: string | null }[] = [];
   nuevoContenido: string = '';
+
   isDarkMode: boolean = false;
   contenedovisible: string = 'listaNotas';
   estadoVentanaNota: boolean = false;
+  
   isLoggingOut: boolean = false;
 
   constructor(
@@ -61,19 +63,20 @@ export class HomePage implements OnInit {
     
   }
   
+  async toggleTheme(event: any) {
+    const isDarkModeNow = event.detail.checked;
+    this.applyTheme(isDarkModeNow);
 
-  async toggleTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    this.applyTheme(this.isDarkMode);
-    await this.storage.set('darkMode', this.isDarkMode);
+    await this.storage.set('darkMode', isDarkModeNow);
+
+    this.isDarkMode = isDarkModeNow;
   }
-
   async loadTheme() {
     const darkMode = await this.storage.get('darkMode');
     this.isDarkMode = darkMode !== null ? darkMode : false;
     this.applyTheme(this.isDarkMode);
   }
-
+  
   applyTheme(isDark: boolean) {
     const body = document.body;
     if (isDark) {
@@ -82,7 +85,7 @@ export class HomePage implements OnInit {
       body.classList.remove('dark');
     }
   }
-
+  
 
 
 

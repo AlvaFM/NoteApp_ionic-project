@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
   providedIn: 'root'
 })
 export class UserService {
+  
   private _Storage: Storage | null = null;
   private usuarioActual: string = '';
 
@@ -138,16 +139,6 @@ async ObtenerNotas(): Promise<{ id: number; contenido: string; fecha: string, im
     return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
   });
 }
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
   async ModificarNota(id: number, nuevoContenido: string): Promise<boolean> {
     const usuariosNotas = (await this._Storage?.get('usuariosNotas')) || {};

@@ -76,11 +76,11 @@ export class LoginPage implements OnInit {
 
 
   async scheduleWelcomeNotification() {
-    console.log('Solicitando permiso para notificaciones...');
+    console.log('Solicitando permiso para notificacion secreta');
     const permission = await LocalNotifications.requestPermissions();
 
     if (permission.display !== 'granted') {
-      console.error('Permiso denegado para notificaciones.');
+      console.error('Permiso denegado para notificacion.');
       return;
     }
 
@@ -90,7 +90,7 @@ export class LoginPage implements OnInit {
       notifications: [
         {
           id: 1, 
-          title: '¡Bienvenido!',
+          title: '¡Cuidado con el Dino!',
           body: 'Notificacion "secreta" uwu de misterio',
           schedule: { at: new Date(new Date().getTime() + 5000) }, 
           smallIcon: 'ic_stat_icon_config_sample',
@@ -148,7 +148,7 @@ export class LoginPage implements OnInit {
     }, 2000);
   }
 
-  limpiarAlmacenamiento() {
-    this.userService.clearStorage();
-  }
+  // limpiarAlmacenamiento() {
+  //   this.userService.clearStorage();
+  // }
 }
