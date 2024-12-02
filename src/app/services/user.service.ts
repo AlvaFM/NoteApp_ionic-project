@@ -89,15 +89,15 @@ export class UserService {
 
   async AgregarNotaUser(nota: string): Promise<boolean> {
     const usuariosNotas = (await this._Storage?.get('usuariosNotas')) || {};
-    
+  
     if (this.usuarioActual && usuariosNotas[this.usuarioActual]) {
       const nuevaNota = {
         id: Date.now() + Math.floor(Math.random() * 100000),
         contenido: nota,
-        fecha: new Date().toISOString() 
+        fecha: new Date().toISOString(),
+        imgUrl: ''  
       };
-      
-     
+  
       usuariosNotas[this.usuarioActual].unshift(nuevaNota); 
       await this._Storage?.set('usuariosNotas', usuariosNotas);
       return true;
@@ -107,19 +107,38 @@ export class UserService {
     }
   }
   
-  async ObtenerNotas(): Promise<{ id: number; contenido: string; fecha: string }[]> {
-    const usuariosNotas = (await this._Storage?.get('usuariosNotas')) || {};
-    const notas = usuariosNotas[this.usuarioActual] || [];
-    const notasConFecha = notas.filter((nota: { fecha: string }) => {
-      return nota.fecha && !isNaN(new Date(nota.fecha).getTime());
-    });
-    notasConFecha.forEach((nota: { fecha: string }) => {
-      nota.fecha = this.datePipe.transform(nota.fecha, 'dd/MM/yy') || '';
-    });
-    return notasConFecha.sort((a: { fecha: string }, b: { fecha: string }) => {
-      return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
-    });
+
+
+async AgregarImagenANota(id: number, imgUrl: string | null = null): Promise<boolean> {
+  const usuariosNotas = (await this._Storage?.get('usuariosNotas')) || {};
+  const notas = usuariosNotas[this.usuarioActual] || [];
+  const nota = notas.find((nota: { id: number }) => nota.id === id);
+  
+  if (nota) {
+    nota.imgUrl = imgUrl;
+    
+    await this._Storage?.set('usuariosNotas', usuariosNotas);
+    return true;
   }
+
+  return false; 
+}
+
+  
+async ObtenerNotas(): Promise<{ id: number; contenido: string; fecha: string, imgUrl: string | null  }[]> {
+  const usuariosNotas = (await this._Storage?.get('usuariosNotas')) || {};
+  const notas = usuariosNotas[this.usuarioActual] || [];
+  const notasConFecha = notas.filter((nota: { fecha: string }) => {
+    return nota.fecha && !isNaN(new Date(nota.fecha).getTime());
+  });
+  notasConFecha.forEach((nota: { fecha: string }) => {
+    nota.fecha = this.datePipe.transform(nota.fecha, 'dd/MM/yy') || '';
+  });
+  return notasConFecha.sort((a: { fecha: string }, b: { fecha: string }) => {
+    return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
+  });
+}
+
   
   
   

@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { AuthService } from '../services/auth.service';
 import { LocalNotifications } from '@capacitor/local-notifications';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+
 
 @Component({
   selector: 'app-home',
@@ -24,20 +26,29 @@ import { LocalNotifications } from '@capacitor/local-notifications';
     ])
   ]
 })
+
+
+
+
+
 export class HomePage implements OnInit {
   nuevaNota: string = '';
   usuarioActual: string | null = null;
-  notasUsuarioActual: { id: number; contenido: string; fecha: string; editando?: boolean }[] = [];
+  notasUsuarioActual: { id: number; contenido: string; fecha: string; editando?: boolean,imgUrl?: string | null }[] = [];
   nuevoContenido: string = '';
   isDarkMode: boolean = false;
   contenedovisible: string = 'listaNotas';
   estadoVentanaNota: boolean = false;
   isLoggingOut: boolean = false;
 
-  constructor(private userService: UserService, 
-  private router: Router, private storage: Storage, private authService: AuthService,) {}
+  constructor(
+  private userService: UserService, 
+  private router: Router, 
+  private storage: Storage, 
+  private authService: AuthService,) {}
 
   async ngOnInit() {
+    
     await this.storage.create();
     this.loadTheme();
     this.usuarioActual = await this.userService.getUsuarioActual();
@@ -46,6 +57,8 @@ export class HomePage implements OnInit {
     setTimeout(() => {
       this.programarNotificacion('bienvenida');
     }, 3000);
+
+    
   }
   
 
@@ -134,6 +147,30 @@ export class HomePage implements OnInit {
     await this.userService.EliminarNota(id);
     this.notasUsuarioActual = await this.userService.ObtenerNotas();
   }
+
+
+  async seleccionarImagen(notaId: number) {
+    console.log('En teoria ahora deberias seleccionar imagen desde el movil')
+    const image = await Camera.getPhoto({
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Prompt,  
+      quality: 100
+    });
+
+    const imgUrl = image.webPath;
+    const exito = await this.userService.AgregarImagenANota(notaId, imgUrl);
+
+    if (exito) {
+      this.notasUsuarioActual = await this.userService.ObtenerNotas();
+      console.log('Imagen asociada a la nota con éxito');
+    } else {
+      console.error('No se pudo asociar la imagen a la nota');
+    }
+  }
+
+
+
+
 
   async editarNota(id: number, nuevoContenido: string) {
     if (nuevoContenido.trim() !== '') {

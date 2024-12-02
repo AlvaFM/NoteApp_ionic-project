@@ -47,17 +47,23 @@
           <div *ngIf="!nota.editando">
             <p style="opacity: 0.7; font-size: 0.9em;">{{ nota.fecha }}</p>
             <p>{{ nota.contenido }}</p>
-
+        
+            <img class="ImgNota" *ngIf="nota.imgUrl" [src]="nota.imgUrl" alt="Imagen de la nota" />
+            
+            <ion-item>
             <ion-button color="dark" (click)="iniciarEdicion(nota)">Editar</ion-button>
             <ion-button color="dark" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
+            <ion-button color="dark" (click)="seleccionarImagen(nota.id)">Añadir Imagen</ion-button>
+            </ion-item>
           </div>
           <div *ngIf="nota.editando">
             <ion-textarea [(ngModel)]="nuevoContenido" rows="6" placeholder="Editar nota"></ion-textarea>
             <ion-button color="dark" (click)="guardarEdicion(nota)">Guardar</ion-button>
             <ion-button color="dark" (click)="cancelarEdicion(nota)">Cancelar</ion-button>
-            <h2 style="opacity: 0;">-----------------------------</h2>
           </div>
         </ion-item>
+        
+        
       </ion-list>
 
       <div *ngIf="contenedovisible === 'nuevaNota'">

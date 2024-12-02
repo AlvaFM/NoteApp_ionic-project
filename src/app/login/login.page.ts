@@ -4,6 +4,9 @@ import { ToastController } from '@ionic/angular';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { UserService } from '../services/user.service';
 import { LocalNotifications } from '@capacitor/local-notifications';
+import { Platform } from '@ionic/angular';
+import { App } from '@capacitor/app';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -32,10 +35,44 @@ export class LoginPage implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private platform: Platform,
+    private alertController : AlertController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      this.confirmExitApp();
+    });
+  }
+
+  async confirmExitApp() {
+    const alert = await this.alertController.create({
+      header: 'Confirmar salida',
+      message: '¿Estás seguro de que quieres salir de la aplicación?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',  
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('El usuario canceló la salida.');
+          }
+        },
+        {
+          text: 'Salir',
+          handler: () => {
+            App.exitApp(); 
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
+
 
 
   async scheduleWelcomeNotification() {

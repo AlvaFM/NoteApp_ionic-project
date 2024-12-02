@@ -1,6 +1,6 @@
 {
 	"appId": "io.ionic.starter",
-	"appName": "noteapp",
+	"appName": "Dinotes",
 	"webDir": "www",
 	"bundledWebRuntime": false,
 	"plugins": {

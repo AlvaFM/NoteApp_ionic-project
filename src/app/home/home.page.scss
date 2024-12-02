@@ -67,3 +67,26 @@ ion-header {
   bottom: 10px; 
   right: 10px;
 }
+
+
+.imgNota {
+  width: 100%; 
+  max-width: 300px; 
+  height: auto; 
+  border-radius: 15px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  border: 2px solid #f0f0f0; 
+  object-fit: cover; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  
+  /* Efecto de hover */
+  &:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+  }
+
+  &.nota-card {
+    margin: 10px auto; 
+    display: block; 
+  }
+}
