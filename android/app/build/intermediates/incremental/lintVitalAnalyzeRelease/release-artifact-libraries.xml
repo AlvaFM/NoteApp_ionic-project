@@ -130,6 +130,19 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name=":@@:capacitor-local-notifications::release"
+      jars="C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\.transforms\a7b29a4cdf9b76d8e78df31ada61fd23\transformed\out\jars\classes.jar;C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\.transforms\a7b29a4cdf9b76d8e78df31ada61fd23\transformed\out\jars\libs\R.jar"
+      resolved="android:capacitor-local-notifications:unspecified"
+      folder="C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\.transforms\a7b29a4cdf9b76d8e78df31ada61fd23\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name=":@@:capacitor-preferences::release"
       jars="C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\preferences\android\build\.transforms\b2016ebdde13298227bdfd9d4b835e38\transformed\out\jars\classes.jar;C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\preferences\android\build\.transforms\b2016ebdde13298227bdfd9d4b835e38\transformed\out\jars\libs\R.jar"
       resolved="android:capacitor-preferences:unspecified"

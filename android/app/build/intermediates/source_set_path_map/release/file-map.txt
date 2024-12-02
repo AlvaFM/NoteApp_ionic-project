@@ -47,5 +47,6 @@ io.ionic.starter.app-packaged_res-45 C:\Users\alvaro\Documents\GitHub\NoteApp_io
 io.ionic.starter.app-packaged_res-46 C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\camera\android\build\intermediates\packaged_res\release
 io.ionic.starter.app-packaged_res-47 C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\haptics\android\build\intermediates\packaged_res\release
 io.ionic.starter.app-packaged_res-48 C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\keyboard\android\build\intermediates\packaged_res\release
-io.ionic.starter.app-packaged_res-49 C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\preferences\android\build\intermediates\packaged_res\release
-io.ionic.starter.app-packaged_res-50 C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\status-bar\android\build\intermediates\packaged_res\release
+io.ionic.starter.app-packaged_res-49 C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\packaged_res\release
+io.ionic.starter.app-packaged_res-50 C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\preferences\android\build\intermediates\packaged_res\release
+io.ionic.starter.app-packaged_res-51 C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\status-bar\android\build\intermediates\packaged_res\release

@@ -11,15 +11,16 @@ INJECTED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ion
 	android:name
 		ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:28:13-62
 manifest
-ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:2:1-41:12
+ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:2:1-44:12
 MERGED from [:capacitor-community-sqlite] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor-community\sqlite\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
 MERGED from [:capacitor-app] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\app\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
 MERGED from [:capacitor-camera] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\camera\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-13:12
 MERGED from [:capacitor-haptics] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-9:12
 MERGED from [:capacitor-keyboard] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\keyboard\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-26:12
 MERGED from [:capacitor-preferences] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\preferences\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
 MERGED from [:capacitor-status-bar] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\status-bar\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
 MERGED from [:capacitor-android] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\android\capacitor\build\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
@@ -86,6 +87,8 @@ MERGED from [org.apache.cordova:framework:10.1.1] C:\Users\alvaro\.gradle\caches
 application
 ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:4:5-36:19
 INJECTED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:4:5-36:19
+MERGED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:11:5-24:19
+MERGED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:11:5-24:19
 MERGED from [:capacitor-cordova-android-plugins] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\release\AndroidManifest.xml:8:5-9:19
 MERGED from [:capacitor-cordova-android-plugins] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\release\AndroidManifest.xml:8:5-9:19
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\alvaro\.gradle\caches\transforms-3\f3e3a68e9259e7dc2746a343e800647b\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
@@ -150,6 +153,18 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:40:5-67
 	android:name
 		ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:40:22-64
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:41:5-81
+MERGED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-81
+MERGED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:41:22-78
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:42:5-77
+MERGED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-77
+MERGED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-77
+	android:name
+		ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:42:22-74
 meta-data#android.support.FILE_PROVIDER_PATHS
 ADDED from C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\android\app\src\main\AndroidManifest.xml:32:13-34:64
 	android:resource
@@ -170,6 +185,8 @@ MERGED from [:capacitor-haptics] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-
 MERGED from [:capacitor-haptics] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
 MERGED from [:capacitor-keyboard] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\keyboard\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
 MERGED from [:capacitor-keyboard] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\keyboard\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
 MERGED from [:capacitor-preferences] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\preferences\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
 MERGED from [:capacitor-preferences] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\preferences\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
 MERGED from [:capacitor-status-bar] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\status-bar\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
@@ -296,6 +313,40 @@ uses-permission#android.permission.VIBRATE
 ADDED from [:capacitor-haptics] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-66
 	android:name
 		ADDED from [:capacitor-haptics] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:7:22-63
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:8:5-68
+	android:name
+		ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:8:22-65
+receiver#com.capacitorjs.plugins.localnotifications.TimedNotificationPublisher
+ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:12:9-106
+	android:name
+		ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:12:19-103
+receiver#com.capacitorjs.plugins.localnotifications.NotificationDismissReceiver
+ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:13:9-107
+	android:name
+		ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:13:19-104
+receiver#com.capacitorjs.plugins.localnotifications.LocalNotificationRestoreReceiver
+ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:14:9-23:20
+	android:exported
+		ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:17:13-37
+	android:directBootAware
+		ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:16:13-43
+	android:name
+		ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:15:13-103
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.LOCKED_BOOT_COMPLETED+action:name:android.intent.action.QUICKBOOT_POWERON
+ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:18:13-22:29
+action#android.intent.action.LOCKED_BOOT_COMPLETED
+ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:19:17-86
+	android:name
+		ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:19:25-83
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:20:17-79
+	android:name
+		ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:20:25-76
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:21:17-82
+	android:name
+		ADDED from [:capacitor-local-notifications] C:\Users\alvaro\Documents\GitHub\NoteApp_ionic-project\NoteApp_ionic-project\node_modules\@capacitor\local-notifications\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:21:25-79
 uses-permission#android.permission.USE_BIOMETRIC
 ADDED from [androidx.biometric:biometric:1.1.0] C:\Users\alvaro\.gradle\caches\transforms-3\cd7d1fd26ad48122cd7f304a204c643c\transformed\biometric-1.1.0\AndroidManifest.xml:24:5-72
 	android:name

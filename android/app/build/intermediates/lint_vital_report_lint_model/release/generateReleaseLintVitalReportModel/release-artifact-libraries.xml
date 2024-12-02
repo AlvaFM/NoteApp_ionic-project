@@ -60,6 +60,9 @@
       name=":@@:capacitor-keyboard::release"
       project=":capacitor-keyboard"/>
   <library
+      name=":@@:capacitor-local-notifications::release"
+      project=":capacitor-local-notifications"/>
+  <library
       name=":@@:capacitor-preferences::release"
       project=":capacitor-preferences"/>
   <library
