@@ -34,7 +34,8 @@ export class HomePage implements OnInit {
   estadoVentanaNota: boolean = false;
   isLoggingOut: boolean = false;
 
-  constructor(private userService: UserService, private router: Router, private storage: Storage, private authService: AuthService,) {}
+  constructor(private userService: UserService, 
+  private router: Router, private storage: Storage, private authService: AuthService,) {}
 
   async ngOnInit() {
     await this.storage.create();
@@ -42,7 +43,11 @@ export class HomePage implements OnInit {
     this.usuarioActual = await this.userService.getUsuarioActual();
     await this.userService.CrearListaNotasUser();
     this.notasUsuarioActual = await this.userService.ObtenerNotas();
+    setTimeout(() => {
+      this.programarNotificacion('bienvenida');
+    }, 3000);
   }
+  
 
   async toggleTheme() {
     this.isDarkMode = !this.isDarkMode;
@@ -68,41 +73,58 @@ export class HomePage implements OnInit {
 
 
 
-  async scheduleNotification(contenido: string) {
+  async programarNotificacion(tipo: string) {
+    console.log('Solicitando permiso para notificaciónes...');
     const permission = await LocalNotifications.requestPermissions();
+  
     if (permission.display !== 'granted') {
-      console.error('Permiso denegado para notificaciones.');
+      console.error('Permiso denegado para notificación.');
       return;
     }
+  
+    console.log('Permiso concedido, programando notificación...');
+  
+    let titulo: string;
+    let mensaje: string;
+    if (tipo === 'bienvenida') {
+      titulo = '¡Bienvenido!';
+      mensaje = 'Es un gusto verte de vuelta :)';
+      console.log('Mensaje de bienvenida listo');
 
+    } else if (tipo === 'nota') {
+      titulo = '¡Nota agregada!';
+      mensaje = 'Tu nota ha sido agregada exitosamente :D';
+      console.log('Mensaje de agregado de nota listo');
+    } else {
+      console.error('Tipo de notificación no reconocido');
+      return;
+    }
+    
     await LocalNotifications.schedule({
       notifications: [
         {
-          id: Date.now(),
-          title: '¡Nueva Nota!',
-          body: `Has agregado una nueva nota: "${contenido}"`,
-          schedule: { at: new Date() },
+          id: 1,
+          title: titulo,
+          body: mensaje,
+          schedule: { at: new Date(new Date().getTime() + 5000) },
           smallIcon: 'ic_stat_icon_config_sample',
           sound: 'beep.wav',
         },
       ],
     });
+  
+    console.log('Notificación programada.');
   }
 
-
-
-
-
-
-
-
+  
   async agregarNota(nuevaNota: string) {
     if (nuevaNota.trim() !== '') {
       await this.userService.AgregarNotaUser(nuevaNota);
       this.notasUsuarioActual = await this.userService.ObtenerNotas();
       this.nuevaNota = '';
       this.AlternarVentanas();
-      await this.scheduleNotification(nuevaNota);
+      this.programarNotificacion('nota');
+
     } else {
       console.error('La nota no puede estar vacía.');
     }

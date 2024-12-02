@@ -54,7 +54,7 @@ export class LoginPage implements OnInit {
         {
           id: 1, 
           title: '¡Bienvenido!',
-          body: 'Es un gusto verte de vuelta :)',
+          body: 'Notificacion "secreta" uwu de misterio',
           schedule: { at: new Date(new Date().getTime() + 5000) }, 
           smallIcon: 'ic_stat_icon_config_sample',
           sound: 'beep.wav', 
@@ -97,8 +97,6 @@ export class LoginPage implements OnInit {
     this.loading = true;
     setTimeout(async () => {
       if (await this.userService.Iniciarsesion(this.nombre, this.contra)) {
-        console.log('Inicio de sesión exitoso, mostrando notificación...');
-        await this.scheduleWelcomeNotification();
         this.router.navigate(['/home']);
       } else {
         const toast = await this.toastController.create({
