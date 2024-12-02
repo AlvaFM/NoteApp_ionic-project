@@ -24,11 +24,12 @@
         Ir al calendario
       </ion-button>
       <ion-button expand="full" (click)="cerrarSesion()">Cerrar sesión</ion-button>
+      <div class="gif-container" *ngIf="isLoggingOut">
+        <img src="assets/icon/dino-bye.gif" alt="Cerrando sesión" height="30%" width="auto" />
+        <h4>Hasta pronto :)</h4>
+      </div>
     </ion-content>
-    <div class="gif-container" *ngIf="isLoggingOut">
-      <img src="assets/icon/dino-bye.gif" alt="Cerrando sesión" height="30%" width="auto" />
-      <h4>Hasta pronto :)</h4>
-    </div>
+  
   </ion-menu>
 
   <div class="ion-page" id="main-content">
@@ -41,7 +42,7 @@
     <ion-content class="ion-padding center-content">
       <h2>¿Qué escribirás hoy?</h2>
 
-      <ion-list *ngIf="contenedovisible === 'listaNotas'">
+      <ion-list class="NotasAnimacion" *ngIf="contenedovisible === 'listaNotas'">
         <ion-item *ngFor="let nota of notasUsuarioActual" lines="none">
           <div *ngIf="!nota.editando">
             <p style="opacity: 0.7; font-size: 0.9em;">{{ nota.fecha }}</p>

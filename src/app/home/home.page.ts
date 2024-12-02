@@ -42,7 +42,6 @@ export class HomePage implements OnInit {
     this.usuarioActual = await this.userService.getUsuarioActual();
     await this.userService.CrearListaNotasUser();
     this.notasUsuarioActual = await this.userService.ObtenerNotas();
-    this.scheduleWelcomeNotification();
   }
 
   async toggleTheme() {
@@ -66,7 +65,10 @@ export class HomePage implements OnInit {
     }
   }
 
-  async scheduleWelcomeNotification() {
+
+
+
+  async scheduleNotification(contenido: string) {
     const permission = await LocalNotifications.requestPermissions();
     if (permission.display !== 'granted') {
       console.error('Permiso denegado para notificaciones.');
@@ -77,8 +79,8 @@ export class HomePage implements OnInit {
       notifications: [
         {
           id: Date.now(),
-          title: '¡Bienvenido!',
-          body: 'Es un gusto verte de vuelta :)',
+          title: '¡Nueva Nota!',
+          body: `Has agregado una nueva nota: "${contenido}"`,
           schedule: { at: new Date() },
           smallIcon: 'ic_stat_icon_config_sample',
           sound: 'beep.wav',
@@ -86,6 +88,13 @@ export class HomePage implements OnInit {
       ],
     });
   }
+
+
+
+
+
+
+
 
   async agregarNota(nuevaNota: string) {
     if (nuevaNota.trim() !== '') {
@@ -128,6 +137,8 @@ export class HomePage implements OnInit {
     }
   }
 
+
+
   cancelarEdicion(nota: { editando?: boolean }) {
     nota.editando = false;
     this.nuevoContenido = '';
@@ -147,24 +158,5 @@ export class HomePage implements OnInit {
     this.contenedovisible = this.estadoVentanaNota ? 'nuevaNota' : 'listaNotas';
   }
 
-  async scheduleNotification(contenido: string) {
-    const permission = await LocalNotifications.requestPermissions();
-    if (permission.display !== 'granted') {
-      console.error('Permiso denegado para notificaciones.');
-      return;
-    }
 
-    await LocalNotifications.schedule({
-      notifications: [
-        {
-          id: Date.now(),
-          title: '¡Nueva Nota!',
-          body: `Has agregado una nueva nota: "${contenido}"`,
-          schedule: { at: new Date() },
-          smallIcon: 'ic_stat_icon_config_sample',
-          sound: 'beep.wav',
-        },
-      ],
-    });
-  }
 }

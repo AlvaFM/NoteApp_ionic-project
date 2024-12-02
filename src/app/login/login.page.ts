@@ -5,6 +5,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { UserService } from '../services/user.service';
 import { LocalNotifications } from '@capacitor/local-notifications';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -36,6 +37,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
+
   async scheduleWelcomeNotification() {
     console.log('Solicitando permiso para notificaciones...');
     const permission = await LocalNotifications.requestPermissions();
@@ -46,21 +48,28 @@ export class LoginPage implements OnInit {
     }
 
     console.log('Permiso concedido, programando notificación...');
+
     await LocalNotifications.schedule({
       notifications: [
         {
-          id: 1, // Usar un identificador único y numérico.
+          id: 1, 
           title: '¡Bienvenido!',
           body: 'Es un gusto verte de vuelta :)',
-          schedule: { at: new Date(new Date().getTime() + 5000) }, // 5 segundos
+          schedule: { at: new Date(new Date().getTime() + 5000) }, 
           smallIcon: 'ic_stat_icon_config_sample',
-          sound: 'beep.wav', // Asegúrate de que el archivo existe en el dispositivo.
+          sound: 'beep.wav', 
         },
       ],
     });
 
     console.log('Notificación programada.');
   }
+
+  
+
+
+
+
 
   async Iniciarsesion() {
     if (this.nombre.includes(' ')) {

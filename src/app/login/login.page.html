@@ -5,11 +5,16 @@
     <img src="./assets/icon/dino loading.gif" alt="Cargando...">
   </div>
 
-  <div class="container" [@slideInOut]>
-  
+
+  <div (click)="scheduleWelcomeNotification()">
     <img src="./assets/icon/Dinotes logo.png" alt="Dinotes Logo" class="logo"/>
-    <h1 id="title">Bienvenido a Dinotes</h1>
-    <h5 id="slogan">Captura tus ideas antes de que se extingan.</h5>
+  </div>
+
+  <div class="container" [@slideInOut]>
+    <h5 id="slogan">
+      Bienvenido a Dinotes!
+      Captura tus ideas antes de que se extingan.
+    </h5>
     <div id="botones">
       <form (ngSubmit)="Iniciarsesion()">
         <ion-item>
@@ -23,22 +28,22 @@
         </ion-item>
         <ion-row class="login-button">
         <ion-button expand="full" type="submit">Iniciar sesión</ion-button>
+        <ion-button expand="full" [routerLink]="['/newuser']">
+          Nuevo usuario
+        </ion-button>
       </ion-row>
-      <ion-row class="newuser-button">
-          <ion-button expand="full" [routerLink]="['/newuser']">
-          Agregar usuario
-          </ion-button>
-        </ion-row>
+      <ion-row>
+        
+      </ion-row>
       </form>
       <div class="forget-password">
       <ion-button expand="full" [routerLink]="['/restpass']">
         Olvidé mi contraseña
       </ion-button>
-      <ion-button expand="full" (click)="scheduleWelcomeNotification()">Probar Notificación</ion-button>
+  
     </div>
     </div>
   </div>
+
  
-  
-  
 </ion-content>
