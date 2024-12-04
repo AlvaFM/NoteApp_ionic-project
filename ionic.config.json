@@ -1,7 +1,9 @@
 {
-  "name": "noteapp",
+  "name": "Dinotes",
   "integrations": {
     "capacitor": {}
   },
   "type": "angular"
+
+  
 }

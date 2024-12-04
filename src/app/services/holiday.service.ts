@@ -7,11 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class HolidayService {
 
-  private apiUrl = 'https://date.nager.at/api/v2/PublicHolidays/2024/CL'; // URL de Nager.Date
+  private apiUrl = 'https://date.nager.at/api/v2/PublicHolidays'; 
 
   constructor(private http: HttpClient) { }
 
-  // Método para obtener los feriados
   getHolidays(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }

@@ -1,38 +1,56 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start" ion-button routerLink="/home" class="ion-no-padding">  
-      <ion-icon name="arrow-back"></ion-icon>
-      </ion-buttons>
-    <ion-title>Calendario</ion-title>
+    <ion-buttons slot="start" class="ion-no-padding">
+      <ion-button routerLink="/home">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     
+    <ion-title>Calendario</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content id="calendario">
-  
-  
-  <ion-item class="calendarioBkn">  
-    
-    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="selectedDate" (ionChange)="selectDate($event)"></ion-datetime>
-    
-  </ion-item>
-  
 
-  <ion-item>
-    <ion-button slot="end" expand="full" routerLink="/agenda">Consultar feriados 2024</ion-button>
-    <h3>---</h3>
-    <ion-label position="floating">Escribe tu evento aquí</ion-label>
-    <ion-input [(ngModel)]="event"></ion-input>
-  </ion-item>
-  <ion-button expand="full" (click)="addEvent()">Agregar evento</ion-button>
-
-  <ion-list>
-    <ion-item *ngFor="let e of events">
-      <ion-label>
-        <h2>{{ e.date }}</h2>
-        <p>{{ e.event }}</p>
-      </ion-label>
+  <section *ngIf="VerEventos === 'desactivado'">
+    <ion-item class="calendarioBkn">
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="selectedDate" (ionChange)="selectDate($event)"></ion-datetime>
     </ion-item>
-  </ion-list>
-  
+
+    <ion-item>
+      <ion-button slot="end" expand="full" routerLink="/agenda">Consultar feriados 2024</ion-button>
+      <h3>{{userId}}</h3>
+    </ion-item>
+
+    <ion-item><h3>Escribe tu evento aqui :</h3></ion-item>
+    <ion-item>
+      <ion-textarea [(ngModel)]="event" placeholder="Escribir...."></ion-textarea>
+    </ion-item>
+  </section>
+  <section *ngIf="VerEventos === 'activado'">
+    <ion-list>
+      
+      <ion-item *ngFor="let event of events">
+        <ion-label>
+          <h2>{{ event.date }}</h2>
+          <p>{{ event.event }}</p>
+          <ion-item>
+            <button color="dark" (click)="deleteEvents(event.date, event.idEvento)">Eliminar</button>
+          </ion-item>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </section>
+
+    <ion-button *ngIf="VerEventos === 'desactivado'"  expand="full" (click)="addEvent()">Agregar evento</ion-button>
+    
+    <ion-button *ngIf="VerEventos === 'desactivado'" expand="full" (click)="VerEventos = 'activado'">Ver eventos</ion-button>
+
+  <ion-footer class="fixed-footer">
+
+
+
+  <ion-button *ngIf="VerEventos === 'activado'" (click)="VerEventos = 'desactivado'">Cerrar eventos</ion-button>
+  </ion-footer>
+
 </ion-content>
