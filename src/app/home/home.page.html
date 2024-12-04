@@ -47,6 +47,7 @@
     <ion-list class="NotasAnimacion" *ngIf="contenedovisible === 'listaNotas'">
       <ion-item *ngFor="let nota of notasUsuarioActual" lines="none">
         <div *ngIf="!nota.editando">
+          <h6 style="opacity: 0;" >------------------------------------</h6><!--Importante no borrar  -->
           <p style="opacity: 0.7; font-size: 0.9em;">{{ nota.fecha }}</p>
           <p>{{ nota.contenido }}</p>
 
@@ -59,6 +60,7 @@
           </ion-item>
         </div>
         <div *ngIf="nota.editando">
+          <h6 style="opacity: 0;" >------------------------------------</h6><!--Importante no borrar  -->
           <ion-textarea [(ngModel)]="nuevoContenido" rows="6" placeholder="Editar nota"></ion-textarea>
           <ion-button color="dark" (click)="guardarEdicion(nota)">Guardar</ion-button>
           <ion-button color="dark" (click)="cancelarEdicion(nota)">Cancelar</ion-button>
